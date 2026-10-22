@@ -1,0 +1,117 @@
+{
+    "header": {
+        "button_parts": "Autoparts catalogs",
+        "button_providers": "Providers",
+        "search_categories": "BRANDS",
+        "select_search": "Criteria",
+        "search_label_group": "Search by group",
+        "search_label_number": "Search by part number",
+        "search_label_name": "Free search"
+    },
+    "footer": {
+        "pages": {
+            "home": "Home",
+            "contact": "Contact",
+            "catalog": "Catalog",
+            "our_policy": "Privacy and Data Protection Policy",
+            "terms": "Terms and Conditions"
+        }
+    },
+    "buttons": {
+        "why-fenix": "Search spare part",
+        "see-requests-parts": "See spare parts requests",
+        "products": "Add",
+        "buy": "Buy",
+        "catalogo": "See Items"
+    },
+    "search-card": {
+        "text-name": "Search by Spare Part Name and Vehicle",
+        "text-vin": "Search by VIN to check spare parts for the vehicle",
+        "label-name": "Name of Spare Part",
+        "label-catalog": "Brand Name",
+        "label-vin": "VIN of Vehicle"
+    },
+    "filters": {
+        "brand": "Vehicle Brand",
+        "model": "Vehicle Model",
+        "model-specific": "Vehicle Specific",
+        "product": "Product Brand",
+        "group": "Group"
+    },
+    "home": {
+        "spare-parts": "Spare Parts",
+        "why-fenix": "Why buy in fenix",
+        "button": "See spare parts requests",
+        "initial-text": "Your online expert in spare parts store,\nwhere you always find the spare part you need.",
+        "nav": {
+            "search-auto-part": "Search spare part",
+            "why-fenix":"Why Fenix?",
+            "sell-oportunities": "Sales Opportunities"
+        },
+        "why-fenix-cards": {
+            "cardText1": "Your purchase is fully protected.",
+            "cardText2": "Verified and trustworthy sellers.",
+            "cardText3": "Experts in spare parts at your service.",
+            "cardText4": "Compare prices quickly and easily.",
+            "cardText5": "Search for spare parts by License Plate, VIN or part number.",
+            "cardText6": "Simple and fast return processes.",
+            "cardText7": "Track your order instantly in real time.",
+            "card2": "The last <strong>{count}</strong> customers rate your buying experience as Excellent.",
+            "card3": "Shared experiences by our customers in their recent purchases."
+        },
+        "intermediate-section": {
+            "title": "Improve your talent<br>with the <strong># 1</strong> software",
+            "subtitle": "From vehicle delivery to the final assembly,<br>simplify each step.",
+            "list": {
+                "costs": "<strong>No monthly costs:</strong> Use the software without periodic fees or subscription payments.",
+                "gestion": "<strong>Online management:</strong> Manage your workshop from any device and location.",
+                "recepcion": "<strong>Vehicle reception:</strong> Easily record the car's condition and include photos.",
+                "diagnostico": "<strong>AI-powered diagnostics:</strong> Identify issues quickly with intelligent diagnostic tools.",
+                "repuestos": "<strong>Spare parts management:</strong> Keep track of inventory and order parts seamlessly.",
+                "cotizacion": "<strong>Instant quotes:</strong> Provide customers with quick and accurate repair estimates.",
+                "seguimiento": "<strong>Real-time tracking:</strong> Monitor repair progress and keep customers informed.",
+                "control": "<strong>Complete control:</strong> Oversee all workshop operations from a single platform."
+            }
+        },
+        "last-section": {
+            "spare-parts": "Auto parts salesman",
+            "sells": "Increase your sales of spare parts",
+            "text": "In Fenix, we connect to thousands of people who are looking for spare parts for their cars with trustworthy and high-quality suppliers.<br>Today we have multiple active requests for spare parts that require an immediate co-signing.<br>If you are a supplier and you want to increase your sales, this is the ideal time to join."
+        }
+    },
+    "catalogo": {
+        "name": "Catalogs",
+        "button": "Add"
+    },
+    "vehicles": {
+        "table": {
+            "brand": "Brand",
+            "model": "Model",
+            "description": "Model Description",
+            "initialYear": "Initial Year",
+            "finalYear": "Final Year",
+            "driverType": "Driver Type",
+            "fuel": "Fuel Type",
+            "engine": "Horse Power",
+            "catalog": "Catalog"
+        },
+        "filter": "Filters"
+    },
+    "products": {
+        "filter": "Filters",
+        "empty": "No spare parts available",
+        "autoparts": "Autoparts",
+        "search_by_group": "Search by Group"
+    },
+    "single-products": {
+        "texto-protegida-inicio": "Purchase protected.",
+        "texto-protegida-final": "Your purchases 100% safe.",
+        "part-number": "Part Number:",
+        "entrega-estimada-title": "Estimated delivery:",
+        "entrega-estimada-subtitle": "Between {initialDayName} {initialDay} of {initialMonth} and {finalDayName} {finalDay} of {finalMonth}.",
+        "garantia-title": "Guarantee:",
+        "garantia-subtitle": "30 days of guarantee. Guarantee only applies to default manufacturing.",
+        "observaciones-title": "Observations:",
+        "observaciones-subtitle": "We do not accept returns at the store."
+    }
+}

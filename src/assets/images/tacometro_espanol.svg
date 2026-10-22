@@ -1,0 +1,88 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="-1366.5117301517519 271.99999999999994 3738.511730151752 1873.9841682758993" width="3739" height="1875">
+	<title>418224819_3b0ecef6-53f0-4dfd-a4ad-72082d87aaf4</title>
+	<defs>
+		<radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1671.953,0,0,160.139,543.789,1979.048)">
+			<stop offset=".199" stop-color="#bababa"/>
+			<stop offset=".265" stop-color="#c6c6c6"/>
+			<stop offset=".431" stop-color="#dfdfdf"/>
+			<stop offset=".604" stop-color="#f1f1f1"/>
+			<stop offset=".788" stop-color="#fcfcfc"/>
+			<stop offset="1" stop-color="#ffffff"/>
+		</radialGradient>
+		<linearGradient id="g2" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(468.289,-191.139,338.218,828.632,1163.53,1406.14)">
+			<stop offset="0" stop-color="#00963a"/>
+			<stop offset=".158" stop-color="#06a541"/>
+			<stop offset=".471" stop-color="#0fbd4b"/>
+			<stop offset=".76" stop-color="#14cc52"/>
+			<stop offset="1" stop-color="#16d154"/>
+		</linearGradient>
+		<linearGradient id="g3" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(176.802,-344.048,668.085,343.321,768.638,960.919)">
+			<stop offset="0" stop-color="#81cb29"/>
+			<stop offset="1" stop-color="#a9f351"/>
+		</linearGradient>
+		<linearGradient id="g4" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-81.234,-320.156,760.634,-192.997,160.885,959.107)">
+			<stop offset="0" stop-color="#ffac05"/>
+			<stop offset=".182" stop-color="#ffbe10"/>
+			<stop offset=".494" stop-color="#ffd820"/>
+			<stop offset=".776" stop-color="#ffe82a"/>
+			<stop offset="1" stop-color="#ffed2d"/>
+		</linearGradient>
+		<linearGradient id="g5" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-181.581,-109.905,367.905,-607.841,-316.785,1364.643)">
+			<stop offset="0" stop-color="#ff0505"/>
+			<stop offset=".277" stop-color="#ff1616"/>
+			<stop offset=".553" stop-color="#ff2222"/>
+			<stop offset=".802" stop-color="#ff2a2a"/>
+			<stop offset="1" stop-color="#ff2d2d"/>
+		</linearGradient>
+	</defs>
+	<style>
+		tspan { white-space:pre } 
+		.s0 { opacity: .2;fill: url(#g1) } 
+		.s1 { fill: url(#g2) } 
+		.s2 { fill: url(#g3) } 
+		.s3 { fill: url(#g4) } 
+		.s4 { fill: url(#g5) } 
+		.s5 { fill: #003a66 } 
+		.t6 { font-size: 50px;fill: #484848;font-weight: 700;font-family: "Poppins-Bold", "Poppins" } 
+		.s7 { fill: none;stroke: #626262;stroke-miterlimit:100 } 
+	</style>
+	<g>
+		<path class="s0" d="m543.79 2139.19c-924.59 0-1671.95-71.59-1671.95-160.14 0-88.56 747.36-160.14 1671.95-160.14 924.59 0 1671.94 71.58 1671.94 160.14 0 88.55-747.35 160.14-1671.94 160.14z"/>
+		<g>
+			<g>
+			</g>
+			<g>
+				<path class="s1" d="m1717.88 1685.29h-488.87c-5.27-206.32-84.73-394.15-212.56-537.9l315.34-315.34c234.6 216.75 376.73 532.31 386.09 853.24z"/>
+				<path class="s2" d="m1331.79 832.05l-315.34 315.34c-135.15-152.13-324.59-254.92-537.9-278.25v-310.72c302.87-28.7 618 73.01 853.24 273.63z"/>
+				<path class="s3" d="m478.55 558.42v310.72c-30.43-3.33-61.39-5.05-92.68-5.05-203.63 0-390.39 72.14-536.18 192.23l-111.81-111.7c179.44-219.87 453.39-361.58 740.67-386.2z"/>
+				<path class="s4" d="m-150.31 1056.32c-182.24 150.42-300.39 375.77-306.85 628.97h-78.48c-0.54-271.58 97.51-533.81 273.52-740.67z"/>
+				<g>
+					<path class="s5" d="m340.49 1601.56l567.9-399.08c3.4-2.39 8.1-1.57 10.49 1.83 2.26 3.21 1.62 7.6-1.32 10.09l-531.17 446.81c-40.75 31.88-87.36-28.13-45.9-59.65z"/>
+					<g>
+						<path class="s5" d="m442.05 1572.19c-31.18-41.6-90.17-50.06-131.75-18.88-41.58 31.18-49.97 90.23-18.85 131.78 31.23 41.61 90.2 50.01 131.81 18.82 41.57-31.17 50-90.16 18.79-131.72z"/>
+					</g>
+				</g>
+			</g>
+		</g>
+		<text id="Podria mejorarse" style="transform: matrix(1.625,0,0,1.625,-1222.907,1026.03)" >
+			<tspan x="0" y="0" class="t6">P</tspan><tspan  y="0" class="t6">o</tspan><tspan  y="0" class="t6">d</tspan><tspan  y="0" class="t6">r</tspan><tspan  y="0" class="t6">i</tspan><tspan  y="0" class="t6">a</tspan><tspan  y="0" class="t6"> </tspan><tspan  y="0" class="t6">m</tspan><tspan  y="0" class="t6">e</tspan><tspan  y="0" class="t6">j</tspan><tspan  y="0" class="t6">o</tspan><tspan  y="0" class="t6">r</tspan><tspan  y="0" class="t6">a</tspan><tspan  y="0" class="t6">r</tspan><tspan  y="0" class="t6">s</tspan><tspan  y="0" class="t6">e
+</tspan>
+		</text>
+		<text id="Bien" style="transform: matrix(1.625,0,0,1.625,-301.814,486.695)" >
+			<tspan x="0" y="0" class="t6">B</tspan><tspan  y="0" class="t6">i</tspan><tspan  y="0" class="t6">e</tspan><tspan  y="0" class="t6">n
+</tspan>
+		</text>
+		<text id="Muy bien" style="transform: matrix(1.625,0,0,1.625,989.666,405.47)" >
+			<tspan x="0" y="0" class="t6">M</tspan><tspan  y="0" class="t6">u</tspan><tspan  y="0" class="t6">y</tspan><tspan  y="0" class="t6"> </tspan><tspan  y="0" class="t6">b</tspan><tspan  y="0" class="t6">i</tspan><tspan  y="0" class="t6">e</tspan><tspan  y="0" class="t6">n</tspan><tspan  y="0" class="t6">
+</tspan>
+		</text>
+		<text id="Excelente" style="transform: matrix(1.625,0,0,1.625,1606.977,925.311)" >
+			<tspan x="0" y="0" class="t6">E</tspan><tspan  y="0" class="t6">x</tspan><tspan  y="0" class="t6">c</tspan><tspan  y="0" class="t6">e</tspan><tspan  y="0" class="t6">l</tspan><tspan  y="0" class="t6">e</tspan><tspan  y="0" class="t6">n</tspan><tspan  y="0" class="t6">t</tspan><tspan  y="0" class="t6">e
+</tspan>
+		</text>
+		<path id="Forma 1" fill-rule="evenodd" class="s7" d="m-687.22 1054.71l267.22 302.37z"/>
+		<path id="Forma 1 copy" fill-rule="evenodd" class="s7" d="m-154.39 508.87l267.23 302.38z"/>
+		<path id="Forma 1 copy 2" fill-rule="evenodd" class="s7" d="m1081.63 439.89l-222.91 336.37z"/>
+		<path id="Forma 1 copy 3" fill-rule="evenodd" class="s7" d="m1684.4 967.77l-265.32 304.05z"/>
+	</g>
+</svg>

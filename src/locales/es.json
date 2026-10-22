@@ -1,0 +1,117 @@
+{
+    "header": {
+        "button_parts": "Marcas de vehiculos",
+        "button_providers": "Proveedores",
+        "search_categories": "MARCAS",
+        "select_search": "Criterios",
+        "search_label_group": "Busqueda por grupo",
+        "search_label_number": "Busqueda por número de articulo",
+        "search_label_name": "Busqueda libre"
+    },
+    "footer": {
+        "pages": {
+            "home": "Inicio",
+            "contact": "Contacto",
+            "catalog": "Catálogo",
+            "our_policy": "Politica de Privacidad y Protección de datos",
+            "terms": "Términos y condiciones"
+        }
+    },
+    "buttons": {
+        "why-fenix": "Buscar repuesto",
+        "see-requests-parts": "Ver solicitudes de repuestos",
+        "products": "Agregar",
+        "buy": "Comprar",
+        "catalogo": "Ver Articulos"
+    },
+    "search-card": {
+        "text-name": "Buscar por Nombre de Autoparte y Vehículo",
+        "text-vin": "Buscar por VIN para despiece del vehículo",
+        "label-name": "Nombre de Autoparte",
+        "label-catalog": "Nombre de la marca",
+        "label-vin": "VIN del Vehículo"
+    },
+    "filters": {
+        "brand": "Marca Vehículo",
+        "model": "Modelo Vehículo",
+        "model-specific": "Vehículo Específico",
+        "product": "Marca Producto",
+        "group": "Grupo"
+    },
+    "home": {
+        "spare-parts": "Autopartes",
+        "why-fenix": "Por qué comprar en fenix",
+        "button": "Ver solicitudes de repuestos",
+        "initial-text": "Tu tienda en línea experta en autopartes,\ndonde siempre encuentras el repuesto que necesitas.",
+        "nav": {
+            "search-auto-part": "Buscar autoparte",
+            "why-fenix":"¿Por qué Fenix?",
+            "sell-oportunities": "Oportunidades de venta"
+        },
+        "why-fenix-cards": {
+            "cardText1": "Tu compra está completamente protegida.",
+            "cardText2": "Vendedores verificados y de total confianza.",
+            "cardText3": "Expertos en autopartes a tu servicio.",
+            "cardText4": "Compara precios de forma rápida y sencilla.",
+            "cardText5": "Busca repuestos por Placa, VIN o número de parte.",
+            "cardText6": "Procesos de devolución simples y rápidos.",
+            "cardText7": "Rastrea tu pedido al instante en tiempo real.",
+            "card2": "Los últimos <strong>5066</strong> clientes valoran su experiencia de compra como <strong>Excelente</strong>.",
+            "card3": "Experiencias compartidas por nuestros clientes en sus compras recientes."
+        },
+        "intermediate-section": {
+            "title": "Mejora la eficiencia de<br>tu Taller con el Software <strong># 1</strong>",
+            "subtitle": "Desde la recepción del vehículo hasta la entrega,<br>simplifica cada paso.",
+            "list": {
+                "costs": "<strong>Sin costos mensuales:</strong> Utiliza el software sin cuotas periódicas ni pagos de suscripción.",
+                "gestion": "<strong>Gestión en línea:</strong> Maneja tu taller desde cualquier dispositivo y lugar.",
+                "recepcion": "<strong>Recepción del vehículo:</strong> Registra fácilmente el estado del auto e incluye fotos.",
+                "diagnostico": "<strong>Diagnóstico inteligente:</strong> Detecta averías, reduce tiempos y calcula precios con precisión.",
+                "repuestos": "<strong>Repuestos en segundos:</strong> Localiza piezas rápidamente con ayuda de inteligencia artificial.",
+                "cotizacion": "<strong>Cotización instantánea:</strong> Genera y envía presupuestos detallados al instante por WhatsApp.",
+                "seguimiento": "<strong>Seguimiento automatizado:</strong> Permite que tus clientes consulten en línea el progreso de la reparación.",
+                "control": "<strong>Control de calidad:</strong> Asegura un servicio excelente mediante revisiones y comentarios."
+            }
+        },
+        "last-section": {
+            "spare-parts": "Autopartista",
+            "sells": "Aumenta tus ventas\nde repuestos",
+            "text": "En Fenix conectamos a cientos de personas que buscan repuestos automotrices con proveedores confiables y de primera calidad.<br>Hoy contamos con múltiples solicitudes activas de repuestos que requieren una cotización inmediata.<br>Si eres proveedor y quieres aumentar tus ventas, este es el momento ideal para unirte."
+        }
+    },
+    "catalogo": {
+        "name": "Catálogos",
+        "button": "Agregar"
+    },
+    "vehicles": {
+        "table": {
+            "brand": "Marca",
+            "model": "Modelo",
+            "description": "Descripción modelo",
+            "initialYear": "Año Inicial",
+            "finalYear": "Año Final",
+            "driverType": "Traccion",
+            "fuel": "Tipo de Combustible",
+            "engine": "Caballos de fuerza",
+            "catalog": "Catálogo"
+        },
+        "filter": "Filtros"
+    },
+    "products": {
+        "filter": "Filtros",
+        "empty": "No hay repuestos disponibles",
+        "autoparts": "Autopartes",
+        "search_by_group": "Búsqueda por grupo"
+    },
+    "single-products": {
+        "texto-protegida-inicio": "Compra protegida.",
+        "texto-protegida-final": "Tus compras 100% seguras.",
+        "part-number": "Número de parte:",
+        "entrega-estimada-title": "Entrega estimada:",
+        "entrega-estimada-subtitle": "Entre el día {initialDayName} {initialDay} de {initialMonth} y el {finalDayName} {finalDay} de {finalMonth}.",
+        "garantia-title": "Garantia:",
+        "garantia-subtitle": "30 dias de garantía. Garantía aplica únicamente por defectos de fabricación.",
+        "observaciones-title": "Observaciones:",
+        "observaciones-subtitle": "No aceptamos retiro en tienda."
+    }
+}
