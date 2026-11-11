@@ -99,7 +99,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
-import axios from 'axios';
+import { tecdoc } from '../services/tecdoc'
 
 import Header from '../components/sections/Header.vue'
 import Formas from '../assets/images/formas-home.svg?w=1920&format=webp&quality=80'
@@ -130,27 +130,17 @@ const searchQuery = ref('')
 // Función para obtener los modelos disponibles
 async function getModels() {
     try {
-        let response = await axios.post(
-        'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-            {
-                "getLinkageTargets": {
-                    "provider": 25100,
-                    "linkageTargetCountry": localStorage.getItem('country'),
-                    "lang": "es",
-                    "linkageTargetType": 'VLOB',
-                    "mfrIds": id.value,
-                    "perPage": 0,
-                    "page": 1,
-                    "includeVehicleModelSeriesFacets": true
-                }
-            },
-            {
-                headers: {
-                'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                'Content-Type' : 'application/json'
-                }
+        let response = await tecdoc({
+            "getLinkageTargets": {
+                "linkageTargetCountry": localStorage.getItem('country'),
+                "lang": "es",
+                "linkageTargetType": 'VLOB',
+                "mfrIds": id.value,
+                "perPage": 0,
+                "page": 1,
+                "includeVehicleModelSeriesFacets": true
             }
-        );
+        });
 
         models.value = response.data.vehicleModelSeriesFacets.counts
             .map(item => {

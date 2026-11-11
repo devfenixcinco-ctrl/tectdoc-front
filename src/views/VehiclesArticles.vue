@@ -164,7 +164,7 @@
 
 <script setup>
 import { onMounted, ref, computed, onUnmounted } from 'vue'
-import axios from 'axios';
+import { tecdoc } from '../services/tecdoc'
 
 import SelectFiltros from '../components/SelectFiltros.vue'
 import SearchFiltros from '../components/SearchFiltros.vue'
@@ -250,27 +250,17 @@ const paginatedRows = computed(() => {
 // Función para obtener los articulos
 async function searchArticles(id) {
     try {
-        let response = await axios.post(
-        'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-            {
-                "getArticles": {
-                    "provider": 25100,
-                    "articleCountry": localStorage.getItem('country'),
-                    "lang": "es",
-                    "linkageTargetType": "P",
-                    "linkageTargetId": id,
-                    "perPage": 1000,
-                    "page": 1,
-                    "includeAll": true
-                }
-            },
-            {
-                headers: {
-                    'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                    'Content-Type' : 'application/json'
-                }
+        let response = await tecdoc({
+            "getArticles": {
+                "articleCountry": localStorage.getItem('country'),
+                "lang": "es",
+                "linkageTargetType": "P",
+                "linkageTargetId": id,
+                "perPage": 1000,
+                "page": 1,
+                "includeAll": true
             }
-        );
+        });
 
         articles.value = response.data.articles.map(article => {
                 return {
@@ -335,22 +325,12 @@ async function searchQueryFunction() {
 // Funcion para obtener los fabricantes
 async function getFabricantes() {
     try {
-        let response = await axios.post(
-        'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-            {
-                "getBrands": {
-                    "provider": 25100,
-                    "articleCountry": localStorage.getItem('country'),
-                    "lang": "es"
-                }
-            },
-            {
-                headers: {
-                'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                'Content-Type' : 'application/json'
-                }
+        let response = await tecdoc({
+            "getBrands": {
+                "articleCountry": localStorage.getItem('country'),
+                "lang": "es"
             }
-        );
+        });
 
         fabricantes.value = response.data.data.array
         .map(item => ({ name: item.mfrName, id: item.dataSupplierId }))

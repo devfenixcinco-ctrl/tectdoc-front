@@ -652,7 +652,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
-import axios from 'axios';
+import { tecdoc } from '../services/tecdoc'
 
 import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
@@ -748,23 +748,13 @@ watch(group, () => {
 // Función para obtener las marcas desde la API
 async function getManufacturers() {
     try {
-        let response = await axios.post(
-        'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-            {
-                "getManufacturers2": { 
-                    "country": localStorage.getItem('country'),
-                    "lang": "es", 
-                    "linkingTargetType": typeVehicle.value,
-                    "provider": 25100,
-                }
-            },
-            {
-                headers: {
-                'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                'Content-Type' : 'application/json'
-                }
+        let response = await tecdoc({
+            "getManufacturers2": { 
+                "country": localStorage.getItem('country'),
+                "lang": "es", 
+                "linkingTargetType": typeVehicle.value,
             }
-        );
+        });
         brandsArray.value = response.data.data.array.map(item => ({ name: item.manuName, id: item.manuId }))
     } catch (error) {
         console.log(error);
@@ -784,27 +774,17 @@ async function getModels(id = null) {
   }
   
   try {
-    let response = await axios.post(
-    'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-        {
-          "getLinkageTargets": {
-            "provider": 25100,
-            "linkageTargetCountry": localStorage.getItem('country'),
-            "lang": "es",
-            "linkageTargetType": localStorage.getItem('typeVehicle'),
-            "mfrIds": id,
-            "perPage": 0,
-            "page": 1,
-            "includeVehicleModelSeriesFacets": true
-          }
-        },
-        {
-            headers: {
-            'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-            'Content-Type' : 'application/json'
-            }
-        }
-    );
+    let response = await tecdoc({
+      "getLinkageTargets": {
+        "linkageTargetCountry": localStorage.getItem('country'),
+        "lang": "es",
+        "linkageTargetType": localStorage.getItem('typeVehicle'),
+        "mfrIds": id,
+        "perPage": 0,
+        "page": 1,
+        "includeVehicleModelSeriesFacets": true
+      }
+    });
 
     modelsArray.value = response.data.vehicleModelSeriesFacets.counts
       .map(item => {
@@ -840,27 +820,17 @@ async function getVehicleSpecific(idModel = null, idBrand = null) {
   }
   
   try {
-    let response = await axios.post(
-    'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-        {
-          "getLinkageTargets": {
-              "provider": 25100,
-              "linkageTargetCountry": localStorage.getItem('country'),
-              "lang": "es",
-              "linkageTargetType": typeVehicle.value,
-              "perPage": 100,
-              "page": 1,
-              "mfrIds": idBrand,
-              "vehicleModelSeriesIds": idModel
-          }
-        },
-        {
-            headers: {
-            'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-            'Content-Type' : 'application/json'
-            }
-        }
-    );
+    let response = await tecdoc({
+      "getLinkageTargets": {
+          "linkageTargetCountry": localStorage.getItem('country'),
+          "lang": "es",
+          "linkageTargetType": typeVehicle.value,
+          "perPage": 100,
+          "page": 1,
+          "mfrIds": idBrand,
+          "vehicleModelSeriesIds": idModel
+      }
+    });
 
     modelsSpecificArray.value = response.data.linkageTargets
       .map(item => {
@@ -924,22 +894,12 @@ async function getVehicleSpecific(idModel = null, idBrand = null) {
 // Funcion para obtener los fabricantes
 async function getFabricantes() {
     try {
-        let response = await axios.post(
-        'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-            {
-                "getBrands": {
-                    "provider": 25100,
-                    "articleCountry": localStorage.getItem('country'),
-                    "lang": "es"
-                }
-            },
-            {
-                headers: {
-                'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                'Content-Type' : 'application/json'
-                }
+        let response = await tecdoc({
+            "getBrands": {
+                "articleCountry": localStorage.getItem('country'),
+                "lang": "es"
             }
-        );
+        });
         fabricantes.value = response.data.data.array
         .map(item => ({ name: item.mfrName, id: item.dataSupplierId }))
         .sort((a, b) => a.name.localeCompare(b.name))
@@ -951,23 +911,13 @@ async function getFabricantes() {
 // Funcion para obtener los groups
 async function getGroups() {
     try {
-        let response = await axios.post(
-        'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-            {
-                "getArticles": {
-                    "provider": 25100,
-                    "articleCountry": localStorage.getItem('country'),
-                    "includeGenericArticleFacets": true,
-                    "lang": "es"
-                }
-            },
-            {
-                headers: {
-                'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                'Content-Type' : 'application/json'
-                }
+        let response = await tecdoc({
+            "getArticles": {
+                "articleCountry": localStorage.getItem('country'),
+                "includeGenericArticleFacets": true,
+                "lang": "es"
             }
-        );
+        });
 
         assemblyGroups.value = response.data.genericArticleFacets.counts.map(
           item => ({

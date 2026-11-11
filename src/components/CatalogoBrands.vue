@@ -65,7 +65,7 @@
 </template>
 
 <script setup>
-import axios from 'axios';
+import { api, tecdoc } from '../services/tecdoc'
 import { onMounted, computed, ref, watch } from 'vue';
 import PageLoader from '../components/PageLoader.vue'
 
@@ -90,23 +90,13 @@ let brandsArrayAll = ref([])
 
 async function getManufacturers() {
     try {
-        let response = await axios.post(
-        'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-            {
-                "getManufacturers2": { 
-                    "country": localStorage.getItem('country'),
-                    "lang": "es", 
-                    "linkingTargetType": props.filter || 'VOLB',
-                    "provider": 25100,
-                }
-            },
-            {
-                headers: {
-                'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                'Content-Type' : 'application/json'
-                }
+        let response = await tecdoc({
+            "getManufacturers2": { 
+                "country": localStorage.getItem('country'),
+                "lang": "es", 
+                "linkingTargetType": props.filter || 'VOLB',
             }
-        );
+        });
         brandsArrayAll.value = response.data.data.array.map(item => item.manuId)
     } catch (error) {
         console.log(error);
@@ -116,7 +106,7 @@ async function getManufacturers() {
 // Obtener marcas de la API
 async function getBrand() {
     try {
-        const responses = await axios.get('https://manufacturers.pruebasfenix.com/public/api/manufacturers')
+        const responses = await api.get('/manufacturers')
         brandsArray.value = responses.data
     } catch (error) {
         console.log(error);

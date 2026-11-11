@@ -181,7 +181,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import axios from 'axios';
+import { tecdoc } from '../services/tecdoc'
 
 import SelectFiltros from '../components/SelectFiltros.vue'
 
@@ -257,27 +257,17 @@ const versionsArray = ref([])
 // Funcion para obtener los modelos
 async function getModels(idBrand) {
     try {
-        let response = await axios.post(
-        'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-            {
-                "getLinkageTargets": {
-                    "provider": 25100,
-                    "linkageTargetCountry": localStorage.getItem('country'),
-                    "lang": "es",
-                    "linkageTargetType": "P",
-                    "mfrIds": idBrand,
-                    "perPage": 0,
-                    "page": 1,
-                    "includeVehicleModelSeriesFacets": true
-                }
-            },
-            {
-                headers: {
-                'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                'Content-Type' : 'application/json'
-                }
+        let response = await tecdoc({
+            "getLinkageTargets": {
+                "linkageTargetCountry": localStorage.getItem('country'),
+                "lang": "es",
+                "linkageTargetType": "P",
+                "mfrIds": idBrand,
+                "perPage": 0,
+                "page": 1,
+                "includeVehicleModelSeriesFacets": true
             }
-        );
+        });
         modelsArray.value = response.data.vehicleModelSeriesFacets.counts.map(item => ({
             id: item.id,
             name:  item.endYearMonth === undefined &&  item.beginYearMonth === undefined ? item.name : item.endYearMonth === undefined ? item.name + ' ' + formatDate(item.beginYearMonth) + ' -' : item.name + ' ' + formatDate(item.beginYearMonth) + ' - ' + formatDate(item.endYearMonth)
@@ -306,55 +296,35 @@ async function getArticles() {
     try {
         let response
         if (type.value == "Número de articulo") {
-            response = await axios.post(
-                'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-                {
-                    "getArticles": { 
-                        "articleCountry": localStorage.getItem('country'), 
-                        "provider": 25100, 
-                        "searchMatchType": "prefix_or_suffix",
-                        "searchQuery": search.value,
-                        "searchType": 0,
-                        "lang": "es", 
-                        "perPage": 1000,
-                        "page": 1, 
-                        "includeAll": true,
-                        "sort": [
-                            {field: "score", direction: "desc"},
-                            {field: "mfrName", direction: "asc"},
-                            {field: "linkageSortNum", direction: "asc"}
-                        ]
-                    } 
-                },
-                {
-                    headers: {
-                    'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                    'Content-Type' : 'application/json'
-                    }
-                }
-            );
+            response = await tecdoc({
+                "getArticles": { 
+                    "articleCountry": localStorage.getItem('country'), 
+                    "searchMatchType": "prefix_or_suffix",
+                    "searchQuery": search.value,
+                    "searchType": 0,
+                    "lang": "es", 
+                    "perPage": 1000,
+                    "page": 1, 
+                    "includeAll": true,
+                    "sort": [
+                        {field: "score", direction: "desc"},
+                        {field: "mfrName", direction: "asc"},
+                        {field: "linkageSortNum", direction: "asc"}
+                    ]
+                } 
+            });
         } else {
-            response = await axios.post(
-                'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-                {
-                    "getArticles": { 
-                        "articleCountry": localStorage.getItem('country'), 
-                        "provider": 25100,
-                        "searchQuery": search.value,
-                        "searchType": 99,
-                        "lang": "es", 
-                        "perPage": 1000, 
-                        "page": 1, 
-                        "includeAll": true 
-                    } 
-                },
-                {
-                    headers: {
-                    'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                    'Content-Type' : 'application/json'
-                    }
-                }
-            );
+            response = await tecdoc({
+                "getArticles": { 
+                    "articleCountry": localStorage.getItem('country'), 
+                    "searchQuery": search.value,
+                    "searchType": 99,
+                    "lang": "es", 
+                    "perPage": 1000, 
+                    "page": 1, 
+                    "includeAll": true 
+                } 
+            });
         }
         articles.value = response.data.articles.map(article => {
                 return {
@@ -395,22 +365,12 @@ const fabricantes = ref([])
 // Funcion para obtener los fabricantes
 async function getFabricantes() {
     try {
-        let response = await axios.post(
-        'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-            {
-                "getBrands": {
-                    "provider": 25100,
-                    "articleCountry": localStorage.getItem('country'),
-                    "lang": "es"
-                }
-            },
-            {
-                headers: {
-                'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                'Content-Type' : 'application/json'
-                }
+        let response = await tecdoc({
+            "getBrands": {
+                "articleCountry": localStorage.getItem('country'),
+                "lang": "es"
             }
-        );
+        });
 
         fabricantes.value = response.data.data.array.map(item => item.mfrName)
     } catch (error) {
@@ -421,27 +381,17 @@ async function getFabricantes() {
 // Función para obtener los modelos disponibles
 async function getSpecificModels(idBrand, idModel) {
     try {
-        let response = await axios.post(
-        'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-            {
-                "getLinkageTargets": {
-                    "provider": 25100,
-                    "linkageTargetCountry": localStorage.getItem('country'),
-                    "lang": "es",
-                    "linkageTargetType": "P",
-                    "mfrIds": idBrand,
-                    "vehicleModelSeriesIds": idModel,
-                    "perPage": 100,
-                    "page": 1
-                }
-            },
-            {
-                headers: {
-                'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                'Content-Type' : 'application/json'
-                }
+        let response = await tecdoc({
+            "getLinkageTargets": {
+                "linkageTargetCountry": localStorage.getItem('country'),
+                "lang": "es",
+                "linkageTargetType": "P",
+                "mfrIds": idBrand,
+                "vehicleModelSeriesIds": idModel,
+                "perPage": 100,
+                "page": 1
             }
-        );
+        });
 
         versionsArray.value = response.data.linkageTargets.map(item => ({
             id: item.vehicleModelSeriesId,

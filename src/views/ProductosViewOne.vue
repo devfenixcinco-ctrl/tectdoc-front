@@ -923,7 +923,7 @@
 
 <script setup>
 import { onMounted, ref, computed } from 'vue'
-import axios from 'axios';
+import { tecdoc } from '../services/tecdoc'
 
 import Header from '../components/sections/Header.vue'
 
@@ -959,26 +959,16 @@ const isLoading = ref(true)
 // Función para obtener la información del producto desde la API
 async function getInfoProduct() {
     try {
-        let response = await axios.post(
-        'https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?js',
-            {
-                "getArticles": {
-                    "provider": 25100,
-                    "articleCountry": localStorage.getItem('country'),
-                    "lang": "es",
-                    "searchQuery": idProduct.value,
-                    "perPage": 5,
-                    "page": 1,
-                    "includeAll": true
-                }
-            },
-            {
-                headers: {
-                'X-Api-Key' : '2BeBXg6QnEsEd55snsUcjnfBBhiQ28ttQfNDxhVJLqGxrx7dJ2Af',
-                'Content-Type' : 'application/json'
-                }
+        let response = await tecdoc({
+            "getArticles": {
+                "articleCountry": localStorage.getItem('country'),
+                "lang": "es",
+                "searchQuery": idProduct.value,
+                "perPage": 5,
+                "page": 1,
+                "includeAll": true
             }
-        );
+        });
         infoProduct.value = response.data.articles.map(item => ({
             fabriName: item.mfrName,
             group: item.genericArticles.map(item => item.genericArticleDescription).join(', ') || "",
