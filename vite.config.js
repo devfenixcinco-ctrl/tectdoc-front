@@ -30,6 +30,8 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
 
   return {
+    // Ruta pública de los assets; "/app/" cuando el build lo sirve Laravel (public/app)
+    base: env.VITE_BASE || '/',
     plugins: [
       vue(),
       vuetify({ autoImport: true }),
