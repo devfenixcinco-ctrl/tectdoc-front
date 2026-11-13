@@ -962,7 +962,6 @@ async function getInfoProduct() {
         let response = await tecdoc({
             "getArticles": {
                 "articleCountry": localStorage.getItem('country'),
-                "lang": "es",
                 "searchQuery": idProduct.value,
                 "perPage": 5,
                 "page": 1,

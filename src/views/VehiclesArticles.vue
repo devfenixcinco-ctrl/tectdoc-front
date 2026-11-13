@@ -253,7 +253,6 @@ async function searchArticles(id) {
         let response = await tecdoc({
             "getArticles": {
                 "articleCountry": localStorage.getItem('country'),
-                "lang": "es",
                 "linkageTargetType": "P",
                 "linkageTargetId": id,
                 "perPage": 1000,
@@ -328,7 +327,6 @@ async function getFabricantes() {
         let response = await tecdoc({
             "getBrands": {
                 "articleCountry": localStorage.getItem('country'),
-                "lang": "es"
             }
         });
 

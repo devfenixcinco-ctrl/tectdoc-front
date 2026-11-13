@@ -133,7 +133,6 @@ async function getModels() {
         let response = await tecdoc({
             "getLinkageTargets": {
                 "linkageTargetCountry": localStorage.getItem('country'),
-                "lang": "es",
                 "linkageTargetType": 'VLOB',
                 "mfrIds": id.value,
                 "perPage": 0,

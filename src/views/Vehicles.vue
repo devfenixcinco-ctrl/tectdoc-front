@@ -238,7 +238,6 @@ async function getSpecificModels() {
         let response = await tecdoc({
             "getLinkageTargets": {
                 "linkageTargetCountry": localStorage.getItem('country'),
-                "lang": "es",
                 "linkageTargetType": "P",
                 "mfrIds": idBrand.value,
                 "vehicleModelSeriesIds": idModel.value,

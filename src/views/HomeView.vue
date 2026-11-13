@@ -751,7 +751,6 @@ async function getManufacturers() {
         let response = await tecdoc({
             "getManufacturers2": { 
                 "country": localStorage.getItem('country'),
-                "lang": "es", 
                 "linkingTargetType": typeVehicle.value,
             }
         });
@@ -777,7 +776,6 @@ async function getModels(id = null) {
     let response = await tecdoc({
       "getLinkageTargets": {
         "linkageTargetCountry": localStorage.getItem('country'),
-        "lang": "es",
         "linkageTargetType": localStorage.getItem('typeVehicle'),
         "mfrIds": id,
         "perPage": 0,
@@ -823,7 +821,6 @@ async function getVehicleSpecific(idModel = null, idBrand = null) {
     let response = await tecdoc({
       "getLinkageTargets": {
           "linkageTargetCountry": localStorage.getItem('country'),
-          "lang": "es",
           "linkageTargetType": typeVehicle.value,
           "perPage": 100,
           "page": 1,
@@ -897,7 +894,6 @@ async function getFabricantes() {
         let response = await tecdoc({
             "getBrands": {
                 "articleCountry": localStorage.getItem('country'),
-                "lang": "es"
             }
         });
         fabricantes.value = response.data.data.array
@@ -915,7 +911,6 @@ async function getGroups() {
             "getArticles": {
                 "articleCountry": localStorage.getItem('country'),
                 "includeGenericArticleFacets": true,
-                "lang": "es"
             }
         });
 

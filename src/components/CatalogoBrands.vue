@@ -93,7 +93,6 @@ async function getManufacturers() {
         let response = await tecdoc({
             "getManufacturers2": { 
                 "country": localStorage.getItem('country'),
-                "lang": "es", 
                 "linkingTargetType": props.filter || 'VOLB',
             }
         });

@@ -1,13 +1,9 @@
-import axios from 'axios'
+import { api } from './api'
+import { clientId } from './config'
 
-// Backend propio: guarda la clave de TecDoc y hace las llamadas al webservice
-export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL
-})
-
-const client = import.meta.env.VITE_TECDOC_CLIENT
+export { api }
 
 // Envía al proxy el mismo cuerpo que espera TecDoc, p. ej. { getArticles: { ... } }
 export function tecdoc(payload) {
-  return api.post(`/tecdoc/${client}`, payload)
+  return api.post(`/tecdoc/${clientId()}`, payload)
 }

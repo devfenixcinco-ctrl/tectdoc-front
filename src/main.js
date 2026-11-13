@@ -4,13 +4,16 @@ import App from './App.vue'
 import './assets/main.css'
 import router from './router'
 import vuetify from './plugins/vuetify'
+import { loadClientConfig } from './services/config'
 
 import es from './locales/es.json'
 import en from './locales/en.json'
 
+const config = await loadClientConfig()
+
 const i18n = createI18n({
   legacy: false,
-  locale: 'es',
+  locale: config.lang || 'es',
   fallbackLocale: 'en',
   messages: {
     es,
