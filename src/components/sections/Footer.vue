@@ -141,6 +141,22 @@
                 {{ $t('footer.pages.our_policy') }}
             </RouterLink>
 
+            <!-- Configurar cookies en MOBILE -->
+            <button
+                v-if="hasConsentManager()"
+                type="button"
+                class="cky-banner-element !text-[#FFFFFF] !font-poppins
+                !transition !duration-300 !ease-in-out hover:!text-[#FF4338]
+                2xl:!hidden
+                xl:!hidden
+                md:!hidden
+                max-sm:!text-[8px]
+                max-[350px]:!text-[7px]"
+                @click="openConsentSettings"
+            >
+                {{ $t('footer.pages.cookie_settings') }}
+            </button>
+
             <!-- Enlaces de navegación - Politica de privacidad y protección de datos Y Terminos y condiciones en DESKTOP -->
             <div class="!flex !flex-row !justify-stretch !gap-[10px]
             max-sm:!hidden"
@@ -178,6 +194,22 @@
                 >
                     {{ $t('footer.pages.our_policy') }}
                 </RouterLink>
+                <template v-if="hasConsentManager()">
+                    <h1>|</h1>
+                    <!-- Configurar cookies: vuelve a abrir el banner del CMP -->
+                    <button
+                        type="button"
+                        class="cky-banner-element !text-[#FFFFFF] !font-poppins
+                        !transition !duration-300 !ease-in-out hover:!text-[#FF4338] hover:!scale-105
+                        2xl:!text-[18px]
+                        xl:!text-[15px]
+                        md:!text-[12px]
+                        max-sm:!text-[10px]"
+                        @click="openConsentSettings"
+                    >
+                        {{ $t('footer.pages.cookie_settings') }}
+                    </button>
+                </template>
             </div>
         </div>
     </div>
@@ -194,6 +226,7 @@ import SocialFacebook from '../../assets/icons/social-media/facebook.svg?w=1920&
 import SocialInstagram from '../../assets/icons/social-media/instagram.svg?w=1920&format=webp&quality=80';
 import SocialWhatsapp from '../../assets/icons/social-media/whatsapp.svg?w=1920&format=webp&quality=80';
 import { onMounted, ref } from 'vue';
+import { hasConsentManager, openConsentSettings } from '../../services/cookieConsent';
 
 // Variable reactiva para el logo de AMostrar
 const LogoAMostrar = ref(LogoNextMobi)
