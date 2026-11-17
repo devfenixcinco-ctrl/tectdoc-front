@@ -1,4 +1,9 @@
 {
+    "consent": {
+        "label": "Autorizo a {company} a tratar mis datos personales para contactarme con información comercial sobre sus productos y servicios, de acuerdo con la",
+        "policy_link": "Política de privacidad",
+        "required": "Debes aceptar el tratamiento de tus datos para enviar el formulario."
+    },
     "legal": {
         "error": "No se pudo cargar el documento. Intenta de nuevo más tarde."
     },
