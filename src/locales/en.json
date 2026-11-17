@@ -1,4 +1,7 @@
 {
+    "legal": {
+        "error": "The document could not be loaded. Please try again later."
+    },
     "header": {
         "button_parts": "Autoparts catalogs",
         "button_providers": "Providers",
@@ -15,7 +18,8 @@
             "catalog": "Catalog",
             "our_policy": "Privacy and Data Protection Policy",
             "terms": "Terms and Conditions",
-            "cookie_settings": "Cookie settings"
+            "cookie_settings": "Cookie settings",
+            "cookies_policy": "Cookie Policy"
         }
     },
     "buttons": {

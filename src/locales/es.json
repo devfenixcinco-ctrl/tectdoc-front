@@ -1,4 +1,7 @@
 {
+    "legal": {
+        "error": "No se pudo cargar el documento. Intenta de nuevo más tarde."
+    },
     "header": {
         "button_parts": "Marcas de vehiculos",
         "button_providers": "Proveedores",
@@ -15,7 +18,8 @@
             "catalog": "Catálogo",
             "our_policy": "Politica de Privacidad y Protección de datos",
             "terms": "Términos y condiciones",
-            "cookie_settings": "Configurar cookies"
+            "cookie_settings": "Configurar cookies",
+            "cookies_policy": "Política de cookies"
         }
     },
     "buttons": {

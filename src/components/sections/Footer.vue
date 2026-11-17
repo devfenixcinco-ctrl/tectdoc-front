@@ -124,7 +124,7 @@
 
             <!-- Enlaces de navegación - Politica de privacidad y protección de datos en MOBILE -->
             <RouterLink
-                to=""
+                to="/politica-de-privacidad"
                 class="!text-[#FFFFFF] !font-poppins
                 !transition !duration-300 !ease-in-out
                 2xl:!hidden
@@ -132,13 +132,32 @@
                 md:!hidden
                 max-sm:!text-[8px]
                 max-[350px]:!text-[7px]"
-                :class="{ 
-                    '!font-bold !text-[#0080BB] max-sm:!text-[12px]': $route.path === '' 
-                }, { 
-                    'hover:!text-[#FF4338] hover:!scale-105' : $route.path !== '' 
+                :class="{
+                    '!font-bold !text-[#0080BB] max-sm:!text-[12px]': $route.path === '/politica-de-privacidad'
+                }, {
+                    'hover:!text-[#FF4338] hover:!scale-105' : $route.path !== '/politica-de-privacidad'
                 }"
             >
                 {{ $t('footer.pages.our_policy') }}
+            </RouterLink>
+
+            <!-- Enlaces de navegación - Politica de cookies en MOBILE -->
+            <RouterLink
+                to="/politica-de-cookies"
+                class="!text-[#FFFFFF] !font-poppins
+                !transition !duration-300 !ease-in-out
+                2xl:!hidden
+                xl:!hidden
+                md:!hidden
+                max-sm:!text-[8px]
+                max-[350px]:!text-[7px]"
+                :class="{
+                    '!font-bold !text-[#0080BB] max-sm:!text-[12px]': $route.path === '/politica-de-cookies'
+                }, {
+                    'hover:!text-[#FF4338] hover:!scale-105' : $route.path !== '/politica-de-cookies'
+                }"
+            >
+                {{ $t('footer.pages.cookies_policy') }}
             </RouterLink>
 
             <!-- Configurar cookies en MOBILE -->
@@ -179,20 +198,37 @@
                 </RouterLink>
                 <h1>|</h1>
                 <RouterLink
-                    to=""
+                    to="/politica-de-privacidad"
                     class="!text-[#FFFFFF] !font-poppins
                     !transition !duration-300 !ease-in-out
                     2xl:!text-[18px]
                     xl:!text-[15px]
                     md:!text-[12px]
                     max-sm:!text-[10px]"
-                    :class="{ 
-                        '!font-bold !text-[#0080BB] 2xl:!text-[22px] xl:!text-[18px] md:!text-[15px] max-sm:!text-[12px]': $route.path === '' 
-                    }, { 
-                        'hover:!text-[#FF4338] hover:!scale-105' : $route.path !== '' 
+                    :class="{
+                        '!font-bold !text-[#0080BB] 2xl:!text-[22px] xl:!text-[18px] md:!text-[15px] max-sm:!text-[12px]': $route.path === '/politica-de-privacidad'
+                    }, {
+                        'hover:!text-[#FF4338] hover:!scale-105' : $route.path !== '/politica-de-privacidad'
                     }"
                 >
                     {{ $t('footer.pages.our_policy') }}
+                </RouterLink>
+                <h1>|</h1>
+                <RouterLink
+                    to="/politica-de-cookies"
+                    class="!text-[#FFFFFF] !font-poppins
+                    !transition !duration-300 !ease-in-out
+                    2xl:!text-[18px]
+                    xl:!text-[15px]
+                    md:!text-[12px]
+                    max-sm:!text-[10px]"
+                    :class="{
+                        '!font-bold !text-[#0080BB] 2xl:!text-[22px] xl:!text-[18px] md:!text-[15px] max-sm:!text-[12px]': $route.path === '/politica-de-cookies'
+                    }, {
+                        'hover:!text-[#FF4338] hover:!scale-105' : $route.path !== '/politica-de-cookies'
+                    }"
+                >
+                    {{ $t('footer.pages.cookies_policy') }}
                 </RouterLink>
                 <template v-if="hasConsentManager()">
                     <h1>|</h1>

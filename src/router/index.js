@@ -8,6 +8,7 @@ import Catalogo from '../views/Catalogo.vue'
 import CatalogoModels from '../views/CatalogoModels.vue'
 import Vehicles from '../views/Vehicles.vue'
 import VehiclesArticles from '../views/VehiclesArticles.vue'
+import LegalView from '../views/LegalView.vue'
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -20,6 +21,8 @@ const routes = [
   { path: '/vehicles/:brand/:idBrand/:model/:idModel', name: 'vehicles', component: Vehicles },
   { path: '/vehicles/:brand/:idBrand/:model/:idModel/articles/:car/:idCar', name: 'vehicles-articles', component: VehiclesArticles },
   { path: '/vehicles/search/:query/:brand/:idBrand/:model/:idModel/articles/:car/:idCar', name: 'vehicles-articles-query', component: VehiclesArticles },
+  { path: '/politica-de-privacidad', name: 'privacy-policy', component: LegalView, props: { policy: 'privacidad' } },
+  { path: '/politica-de-cookies', name: 'cookies-policy', component: LegalView, props: { policy: 'cookies' } },
 ]
 
 const router = createRouter({
