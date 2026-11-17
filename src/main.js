@@ -5,13 +5,14 @@ import './assets/main.css'
 import router from './router'
 import vuetify from './plugins/vuetify'
 import { loadClientConfig } from './services/config'
-import { loadConsentManager } from './services/cookieConsent'
+import { loadConsentManager, setupConsentMode } from './services/cookieConsent'
 
 import es from './locales/es.json'
 import en from './locales/en.json'
 
 const config = await loadClientConfig()
 
+setupConsentMode(config.gtm_id)
 loadConsentManager(config.consent)
 
 const i18n = createI18n({
