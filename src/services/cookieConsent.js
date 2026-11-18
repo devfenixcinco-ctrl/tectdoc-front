@@ -8,6 +8,7 @@ const providers = {
     // CookieYes también reabre el banner con los elementos que tienen la clase
     // "cky-banner-element" (la lleva el botón del pie de página)
     openSettings: () => window.revisitCkyConsent?.(),
+    onLoad: matchCookieYesButtons,
   },
   cookiebot: {
     script: (id) => ({ id: 'Cookiebot', src: 'https://consent.cookiebot.com/uc.js', data: { cbid: id } }),
@@ -98,7 +99,26 @@ export function loadConsentManager(consent) {
   Object.assign(script.dataset, data)
   document.head.appendChild(script)
 
+  provider.onLoad?.()
   active = provider
+}
+
+// LGPD-01 exige el mismo destaque para Aceptar, Rechazar y Personalizar. La plantilla
+// de CookieYes dibuja "Personalizar" solo con borde y el plan gratis no permite cambiarlo,
+// así que se le copia el estilo del botón "Aceptar todo" (sirve para cualquier color).
+function matchCookieYesButtons() {
+  const sync = () => {
+    const accept = document.querySelector('[data-cky-tag="accept-button"]')
+    const settings = document.querySelector('[data-cky-tag="settings-button"]')
+    const style = accept?.getAttribute('style')
+
+    if (settings && style && settings.getAttribute('style') !== style) {
+      settings.setAttribute('style', style)
+    }
+  }
+
+  // CookieYes vuelve a dibujar el banner al abrirlo de nuevo o al cambiar de idioma
+  new MutationObserver(sync).observe(document.body, { childList: true, subtree: true })
 }
 
 // Abre de nuevo las preferencias para cambiar o retirar el consentimiento
