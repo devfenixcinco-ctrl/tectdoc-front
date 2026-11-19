@@ -47,9 +47,9 @@
 </template>
 
 <script setup>
-import UserImage from '../assets/images/user.png?w=1920&format=webp&quality=80'
+import { ref } from 'vue'
 
-import CiudadesColombia from '../assets/javascript/colombia.js'
+import UserImage from '../assets/images/user.png?w=96&format=webp&quality=80'
 
 // Varible global para la fecha actual
 const date = new Date()
@@ -59,9 +59,15 @@ const year = date.getFullYear()
 const month = ('0' + (date.getMonth() + 1)).slice(-2);
 const day = date.getDate() - 2
 
-// Obtener una ciudad y un estado aleatorio de Colombia
-const city = CiudadesColombia[Math.floor(Math.random() * 1102)].name
-const state = CiudadesColombia[Math.floor(Math.random() * 1102)].state_name
+// Obtener una ciudad y un estado aleatorio de Colombia. La lista (~150 KB) se carga
+// aparte para no hacer más pesado el paquete inicial de la página
+const city = ref('')
+const state = ref('')
+
+import('../assets/javascript/colombia.js').then(({ default: CiudadesColombia }) => {
+    city.value = CiudadesColombia[Math.floor(Math.random() * CiudadesColombia.length)].name
+    state.value = CiudadesColombia[Math.floor(Math.random() * CiudadesColombia.length)].state_name
+})
 
 // Definir las props que recibe el componente
 defineProps({

@@ -79,9 +79,9 @@
 </template>
 
 <script setup>
-import ColombiaFlag from '../../assets/icons/flags/colombia.svg?w=1920&format=webp&quality=80';
-import CostRicaFlag from '../../assets/icons/flags/costa-rica.svg?w=1920&format=webp&quality=80';
-import EcuadorFlag from '../../assets/icons/flags/ecuador.svg?w=1920&format=webp&quality=80';
+import ColombiaFlag from '../../assets/icons/flags/colombia.svg?w=100&format=webp&quality=80';
+import CostRicaFlag from '../../assets/icons/flags/costa-rica.svg?w=100&format=webp&quality=80';
+import EcuadorFlag from '../../assets/icons/flags/ecuador.svg?w=100&format=webp&quality=80';
 
 import { ref, watch, computed } from "vue";
 import { useI18n } from "vue-i18n";

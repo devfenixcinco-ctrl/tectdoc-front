@@ -74,7 +74,7 @@
             v-if="cantidadImagenes >= 1"
             :src="imagenes[0]" 
             alt="Default"
-            loading="lazy"
+            fetchpriority="high"
             class="!px-[20px] !py-[30px] !bg-[#FFFFFF] !object-contain
             2xl:!w-[680px] 2xl:!h-[680px] 2xl:!rounded-[5px]
             xl:!w-[550px] xl:!h-[550px] xl:!rounded-[5px]
@@ -100,7 +100,7 @@
             v-if="cantidadImagenes >= 1"
             :src="imagenes[0]" 
             alt="Default"
-            loading="lazy"
+            fetchpriority="high"
             class="!px-[20px] !py-[30px] !bg-[#FFFFFF] !object-contain
             max-[500px]:!w-[350px] max-[500px]:!h-[350px] max-[500px]:!rounded-[5px]
             max-[400px]:!w-[300px] max-[400px]:!h-[300px] max-[400px]:!rounded-[5px]

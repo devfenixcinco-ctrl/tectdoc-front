@@ -237,7 +237,6 @@
       <img 
         :src="Formas" 
         alt="Formas"
-        loading="lazy"
         class="
           absolute
 
@@ -432,9 +431,10 @@
         max-sm:!py-[40px] max-sm:!flex-col"
       >
         <!-- Imagen -->
-        <img 
-          :src="CarHome" 
+        <img
+          :src="CarHome"
           alt="Car Image"
+          loading="lazy"
           class="!rounded-[20px]
           2xl:!w-[600px] 2xl:!h-[600px]
           xl:!w-[500px] xl:!h-[500px]
@@ -594,7 +594,6 @@
       <img 
         :src="Formas" 
         alt="Formas"
-        loading="lazy"
         class="!absolute !z-[2] scale-x-[-1]
         2xl:!top-[2582px] 2xl:!left-[1550px]
         xl:!top-[2025px] xl:!left-[995px]
@@ -658,7 +657,7 @@ import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 
-import Formas from '../assets/images/formas-home.svg?w=1920&format=webp&quality=80'
+import Formas from '../assets/images/formas-home.svg'
 import Header from '../components/sections/Header.vue'
 
 import SelectFiltros from '../components/SelectFiltros.vue'
@@ -674,16 +673,16 @@ import SliderHome from '../components/SliderHome.vue'
 
 import Card from '../components/CardHome.vue'
 
-import TacometroEspañol from '../assets/images/tacometro_espanol.svg?w=1920&format=webp&quality=80'
-import TacometroIngles from '../assets/images/tacometro_ingles.svg?w=1920&format=webp&quality=80'
+import TacometroEspañol from '../assets/images/tacometro_espanol.svg'
+import TacometroIngles from '../assets/images/tacometro_ingles.svg'
 
 import ButtonGeneral from '../components/ButtonGeneral.vue'
 
 import Footer from '../components/sections/Footer.vue'
 
-import bgImage from '../assets/images/background.png?w=1920&format=webp&quality=80'
-import bgImage2 from '../assets/images/background-2.svg?w=1920&format=webp&quality=80'
-import CarHome from '../assets/images/car_home.png?w=1920&format=webp&quality=80'
+import bgImage from '../assets/images/background.png?w=1920&format=webp&quality=70'
+import bgImage2 from '../assets/images/background-2.svg?w=1600&format=webp&quality=60'
+import CarHome from '../assets/images/car_home.png?w=1200&format=webp&quality=75'
 const activeSection = ref('buscar-auto-parte')
 
 // Función para ir al contenido de la sección
@@ -984,9 +983,8 @@ let observer = null
 
 // Función para obtener las marcas y modelos al montar el componente
 onMounted(async () => {
-  await getGroups();
-  await getFabricantes();
-  await getManufacturers();
+  // Las tres consultas son independientes: se piden a la vez y no una tras otra
+  await Promise.all([getGroups(), getFabricantes(), getManufacturers()]);
   if (localStorage.getItem('typeVehicle') === null) {
     localStorage.setItem('typeVehicle', typeVehicle.value)
   } else {

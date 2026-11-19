@@ -34,7 +34,7 @@ const props = defineProps({
 
     icon_img: {
         type: String,
-        default: "../../assets/icons/header-icon.svg?w=1920&format=webp&quality=80"
+        default: "../../assets/icons/header-icon.svg"
     }
 });
 

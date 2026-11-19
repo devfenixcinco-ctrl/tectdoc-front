@@ -254,13 +254,13 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 
-import Logo from '../../assets/icons/logo.svg?w=1920&format=webp&quality=80';
-import LogoNextMobi from '../../assets/images/next_mobi_3.png?w=1920&format=webp&quality=80';
+import Logo from '../../assets/icons/logo.svg';
+import LogoNextMobi from '../../assets/images/next_mobi_3.png?w=400&format=webp&quality=80';
 
 import SocialMedia from '../Footer/SocialButtons.vue';
-import SocialFacebook from '../../assets/icons/social-media/facebook.svg?w=1920&format=webp&quality=80';
-import SocialInstagram from '../../assets/icons/social-media/instagram.svg?w=1920&format=webp&quality=80';
-import SocialWhatsapp from '../../assets/icons/social-media/whatsapp.svg?w=1920&format=webp&quality=80';
+import SocialFacebook from '../../assets/icons/social-media/facebook.svg';
+import SocialInstagram from '../../assets/icons/social-media/instagram.svg';
+import SocialWhatsapp from '../../assets/icons/social-media/whatsapp.svg';
 import { onMounted, ref } from 'vue';
 import { hasConsentManager, openConsentSettings } from '../../services/cookieConsent';
 

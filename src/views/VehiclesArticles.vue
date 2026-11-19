@@ -26,7 +26,6 @@
                 xl:!w-[200px]
                 max-[1024px]:!w-[200px]
                 max-[500px]:!w-[170px]"
-                loading="lazy"
                 style="transform: scaleX(-1) rotate(180deg);"
             >
         </div>
@@ -172,9 +171,9 @@ import SearchFiltros from '../components/SearchFiltros.vue'
 import PageLoader from '../components/PageLoader.vue'
 
 import Header from '../components/sections/Header.vue'
-import Formas from '../assets/images/formas-home.svg?w=1920&format=webp&quality=80'
+import Formas from '../assets/images/formas-home.svg'
 
-import NotAvailable from '../assets/images/not_available.png?w=1920&format=webp&quality=80'
+import NotAvailable from '../assets/images/not_available.png?w=800&format=webp&quality=80'
 
 import CardProductsSearch from '../components/CardProductsSearch.vue';
 

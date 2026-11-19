@@ -40,6 +40,14 @@
         xl:!w-[95%] xl:!h-[590px] xl:!px-[40px] xl:!gap-[30px]
         max-[1024px]:!hidden"
     >
+        <!-- Espacio reservado para las imágenes mientras carga: evita que la
+             información se desplace al llegar los datos (CLS) -->
+        <div
+            v-if="isLoading"
+            class="!bg-[#FFFFFF] !rounded-[5px]
+            2xl:!w-[735px] 2xl:!h-[680px]
+            xl:!w-[683px] xl:!h-[550px]"
+        />
         <!-- Imagenes del producto -->
         <ImagenesProductos 
             v-if="cantidadImagenes !== null && cantidadImagenes > 0 && infoProduct.length > 0"
@@ -637,6 +645,11 @@
         min-[768px]:!hidden
         max-[500px]:!w-[95%] max-[500px]:!h-[1160px] max-[500px]:!mb-[50px] max-[500px]:!px-[20px] max-[500px]:!pt-[30px] max-[500px]:!gap-[30px] max-[500px]:!py-[0px]"
     >
+        <!-- Espacio reservado para las imágenes mientras carga (CLS) -->
+        <div
+            v-if="isLoading"
+            class="!bg-[#FFFFFF] !rounded-[5px] max-[500px]:!w-[350px] max-[500px]:!h-[440px]"
+        />
         <!-- Imagenes del producto -->
         <ImagenesProductos 
             v-if="cantidadImagenes !== null && cantidadImagenes > 0 && infoProduct.length > 0"
@@ -976,7 +989,8 @@ async function getInfoProduct() {
             unitPerEmbalaje: item.misc.quantityPerPackage,
             quantityPerUnit: item.misc.quantityPerPartPerPackage,
             price: item.price ? `$ ${item.price}` : '$0',
-            images: item.images.map(img => img.imageURL3200),
+            // 800 px basta para el tamaño en pantalla (máx. 680 px); la de 3200 px pesaba varias veces más
+            images: item.images.map(img => img.imageURL800 || img.imageURL1600 || img.imageURL3200),
             criteria: item.articleCriteria
         }));
         cantidadImagenes.value = infoProduct.value[0].images.length

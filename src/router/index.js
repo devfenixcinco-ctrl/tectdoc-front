@@ -1,14 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ProductosView from '../views/ProductosView.vue'
-import ProductosViewGroup from '../views/ProductosViewGroup.vue'
-import ProductosViewGroupPage from '../views/ProductosViewGroupPage.vue'
-import ProductosViewOne from '../views/ProductosViewOne.vue'
-import Catalogo from '../views/Catalogo.vue'
-import CatalogoModels from '../views/CatalogoModels.vue'
-import Vehicles from '../views/Vehicles.vue'
-import VehiclesArticles from '../views/VehiclesArticles.vue'
-import LegalView from '../views/LegalView.vue'
+
+// El home va en el paquete inicial (es la página de entrada); el resto de páginas se
+// descarga solo cuando se visita
+const ProductosView = () => import('../views/ProductosView.vue')
+const ProductosViewGroup = () => import('../views/ProductosViewGroup.vue')
+const ProductosViewGroupPage = () => import('../views/ProductosViewGroupPage.vue')
+const ProductosViewOne = () => import('../views/ProductosViewOne.vue')
+const Catalogo = () => import('../views/Catalogo.vue')
+const CatalogoModels = () => import('../views/CatalogoModels.vue')
+const Vehicles = () => import('../views/Vehicles.vue')
+const VehiclesArticles = () => import('../views/VehiclesArticles.vue')
+const LegalView = () => import('../views/LegalView.vue')
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },

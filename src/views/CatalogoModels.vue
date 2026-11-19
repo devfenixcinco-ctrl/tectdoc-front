@@ -26,7 +26,6 @@
                 xl:!w-[200px]
                 max-[1024px]:!w-[200px]
                 max-[500px]:!w-[170px]"
-                loading="lazy"
                 style="transform: scaleX(-1) rotate(180deg);"
             >
         </div>
@@ -102,7 +101,7 @@ import { ref, onMounted, computed } from 'vue'
 import { tecdoc } from '../services/tecdoc'
 
 import Header from '../components/sections/Header.vue'
-import Formas from '../assets/images/formas-home.svg?w=1920&format=webp&quality=80'
+import Formas from '../assets/images/formas-home.svg'
 
 import CatalogoModels from '../components/CatalogoModels.vue';
 

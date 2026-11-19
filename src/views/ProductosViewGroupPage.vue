@@ -16,7 +16,6 @@
                 xl:!w-[250px]
                 md:!w-[200px]
                 max-sm:!w-[200px]"
-                loading="lazy"
                 style="transform: scaleX(-1) rotate(180deg);"
             >
         </div>
@@ -187,7 +186,7 @@ import SelectFiltros from '../components/SelectFiltros.vue'
 
 import CardProductsSearch from '../components/CardProductsSearch.vue'
 
-import Formas from '../assets/images/formas-home.svg?w=1920&format=webp&quality=80'
+import Formas from '../assets/images/formas-home.svg'
 import Header from '../components/sections/Header.vue'
 
 import Footer from '../components/sections/Footer.vue'
@@ -196,7 +195,7 @@ import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 
-import NotAvailable from '../assets/images/not_available.png?w=1920&format=webp&quality=80'
+import NotAvailable from '../assets/images/not_available.png?w=800&format=webp&quality=80'
 
 // Obtener variables de la URL
 const search = ref(route.params.search)
@@ -278,7 +277,8 @@ async function getModels(idBrand) {
 }
 
 // Lista de marcas disponibles
-const brandsObj = import.meta.glob('../assets/svg/*.svg', { eager: true, query: '?url', import: 'default' });
+// Solo se usan los nombres de las marcas; se toman de los logos livianos del carrusel
+const brandsObj = import.meta.glob('../assets/svg/small/*.svg', { eager: true, query: '?w=140&format=webp&quality=80', import: 'default' });
 const brandsArray = Object.entries(brandsObj).map(([path]) => {
     const parts = path.split('/');
     const file = parts[parts.length - 1];

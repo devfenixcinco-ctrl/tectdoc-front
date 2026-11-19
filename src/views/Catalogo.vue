@@ -16,7 +16,6 @@
                 xl:!w-[250px]
                 md:!w-[200px]
                 max-sm:!w-[200px]"
-                loading="lazy"
                 style="transform: scaleX(-1) rotate(180deg);"
             >
         </div>
@@ -89,7 +88,7 @@
 import { ref, watch } from 'vue'
 
 import Header from '../components/sections/Header.vue'
-import Formas from '../assets/images/formas-home.svg?w=1920&format=webp&quality=80'
+import Formas from '../assets/images/formas-home.svg'
 
 import SearchFiltros from '../components/SearchFiltros.vue'
 

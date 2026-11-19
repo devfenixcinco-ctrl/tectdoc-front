@@ -24,10 +24,11 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-// Obtener los logos de las marcas disponibles
+// Obtener los logos de las marcas disponibles. Algunos SVG originales pesan más de
+// 1 MB; se convierten a WebP de 140 px (se muestran a 70 px)
 const logos = ref(
   Object.values(
-    import.meta.glob('../assets/svg/small/*.svg', { eager: true, query: '?url', import: 'default' })
+    import.meta.glob('../assets/svg/small/*.svg', { eager: true, query: '?w=140&format=webp&quality=80', import: 'default' })
   )
 )
 

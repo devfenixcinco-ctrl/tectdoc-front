@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import Llanta from '../assets/icons/llanta.svg?w=1920&format=webp&quality=80'
+import Llanta from '../assets/icons/llanta.svg'
 
 // Propiedades que se le comparten al componente
 defineProps({

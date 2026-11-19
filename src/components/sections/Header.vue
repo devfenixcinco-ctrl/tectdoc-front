@@ -209,23 +209,23 @@ const { t } = useI18n()
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
-import Logo from '../../assets/icons/logo.svg?w=1920&format=webp&quality=80';
-import LogoNextMobi from '../../assets/images/next_mobi_2.png?w=1920&format=webp&quality=80';
-import Hamburger from '../../assets/icons/hamburger.svg?w=1920&format=webp&quality=80';
+import Logo from '../../assets/icons/logo.svg';
+import LogoNextMobi from '../../assets/images/next_mobi_2.png?w=400&format=webp&quality=80';
+import Hamburger from '../../assets/icons/hamburger.svg';
 
 import Flags from '../Header/Flags.vue';
-import ColombiaFlag from '../../assets/icons/flags/colombia.svg?w=1920&format=webp&quality=80';
-import EcuadorFlag from '../../assets/icons/flags/ecuador.svg?w=1920&format=webp&quality=80';
-import CostaRicaFlag from '../../assets/icons/flags/costa-rica.svg?w=1920&format=webp&quality=80';
-import MexicoFlag from '../../assets/icons/flags/mexico.svg?w=1920&format=webp&quality=80';
-import SpainFlag from '../../assets/icons/flags/spain.svg?w=1920&format=webp&quality=80';
-import USAFlag from '../../assets/icons/flags/usa.svg?w=1920&format=webp&quality=80';
+import ColombiaFlag from '../../assets/icons/flags/colombia.svg?w=100&format=webp&quality=80';
+import EcuadorFlag from '../../assets/icons/flags/ecuador.svg?w=100&format=webp&quality=80';
+import CostaRicaFlag from '../../assets/icons/flags/costa-rica.svg?w=100&format=webp&quality=80';
+import MexicoFlag from '../../assets/icons/flags/mexico.svg?w=100&format=webp&quality=80';
+import SpainFlag from '../../assets/icons/flags/spain.svg?w=100&format=webp&quality=80';
+import USAFlag from '../../assets/icons/flags/usa.svg?w=100&format=webp&quality=80';
 
 import Search from '../Header/Search.vue';
 
 import ButtonsHeader from '../Header/ButtonsHeaders.vue';
-import Catalogo from '../../assets/icons/header-icon.svg?w=1920&format=webp&quality=80';
-import Cart from '../../assets/icons/header-cart.svg?w=1920&format=webp&quality=80';
+import Catalogo from '../../assets/icons/header-icon.svg';
+import Cart from '../../assets/icons/header-cart.svg';
 
 // Variable reactiva para el menú lateral
 const menu = ref(false)

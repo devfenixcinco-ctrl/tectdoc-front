@@ -1,7 +1,8 @@
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
-import '@mdi/font/css/materialdesignicons.css'
+// Solo los íconos MDI que usa el sitio (ver vite-plugins/mdi-icons.js)
+import 'virtual:mdi-icons.css'
 
 export default createVuetify({
   icons: {

@@ -30,3 +30,6 @@ createApp(App)
   .use(vuetify)
   .use(i18n)
   .mount('#app')
+
+// Quita la pantalla de carga de index.html
+document.getElementById('app-loader')?.remove()
