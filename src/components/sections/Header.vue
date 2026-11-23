@@ -236,7 +236,8 @@ const LogoAMostrar = ref(LogoNextMobi)
 // Items para el menu lateral
 const items = [
     { title: 'Home', icon: 'mdi-home', route: { name: 'home' } },
-    { title: 'Cátalogo de autopartes', icon: 'mdi-file-document-outline', route: { name: 'catalogo' } }
+    { title: 'Cátalogo de autopartes', icon: 'mdi-file-document-outline', route: { name: 'catalogo' } },
+    { title: 'Contacto', icon: 'mdi-email-outline', route: { name: 'contact' } }
 ]
 
 // Lista de criterios de búsqueda

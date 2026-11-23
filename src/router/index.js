@@ -12,6 +12,7 @@ const CatalogoModels = () => import('../views/CatalogoModels.vue')
 const Vehicles = () => import('../views/Vehicles.vue')
 const VehiclesArticles = () => import('../views/VehiclesArticles.vue')
 const LegalView = () => import('../views/LegalView.vue')
+const ContactView = () => import('../views/ContactView.vue')
 const ThanksView = () => import('../views/ThanksView.vue')
 
 const routes = [
@@ -27,6 +28,7 @@ const routes = [
   { path: '/vehicles/search/:query/:brand/:idBrand/:model/:idModel/articles/:car/:idCar', name: 'vehicles-articles-query', component: VehiclesArticles },
   { path: '/politica-de-privacidad', name: 'privacy-policy', component: LegalView, props: { policy: 'privacidad' } },
   { path: '/politica-de-cookies', name: 'cookies-policy', component: LegalView, props: { policy: 'cookies' } },
+  { path: '/contacto', name: 'contact', component: ContactView },
   { path: '/gracias', name: 'thanks', component: ThanksView },
 ]
 

@@ -1,4 +1,24 @@
 {
+    "contact": {
+        "title": "Contáctenos",
+        "intro": "Déjenos sus datos y un asesor le contactará.",
+        "name": "Nombre",
+        "company": "Empresa",
+        "segment": "Usted es",
+        "email": "Correo electrónico",
+        "phone": "Teléfono",
+        "submit": "Enviar",
+        "required": "Este campo es obligatorio.",
+        "too_long": "Máximo {length} caracteres.",
+        "invalid_email": "Ingrese un correo válido.",
+        "error": "No pudimos enviar sus datos. Intente de nuevo en unos minutos.",
+        "too_many": "Ha enviado varios formularios seguidos. Espere un minuto e intente de nuevo.",
+        "segments": {
+            "fabricante": "Fabricante",
+            "distribuidor": "Distribuidor",
+            "taller": "Taller"
+        }
+    },
     "thanks": {
         "title": "¡Gracias por escribirnos!",
         "text": "Recibimos sus datos. Un asesor le contactará pronto.",

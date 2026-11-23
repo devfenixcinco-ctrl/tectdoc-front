@@ -1,4 +1,24 @@
 {
+    "contact": {
+        "title": "Contact us",
+        "intro": "Leave us your details and an advisor will contact you.",
+        "name": "Name",
+        "company": "Company",
+        "segment": "You are a",
+        "email": "Email",
+        "phone": "Phone",
+        "submit": "Send",
+        "required": "This field is required.",
+        "too_long": "Maximum {length} characters.",
+        "invalid_email": "Enter a valid email.",
+        "error": "We could not send your details. Please try again in a few minutes.",
+        "too_many": "You have sent several forms in a row. Wait a minute and try again.",
+        "segments": {
+            "fabricante": "Manufacturer",
+            "distribuidor": "Distributor",
+            "taller": "Workshop"
+        }
+    },
     "thanks": {
         "title": "Thank you for contacting us!",
         "text": "We received your details. An advisor will contact you soon.",

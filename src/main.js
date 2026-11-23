@@ -6,12 +6,14 @@ import router from './router'
 import vuetify from './plugins/vuetify'
 import { loadClientConfig } from './services/config'
 import { loadConsentManager, setupConsentMode } from './services/cookieConsent'
+import { captureAttribution } from './services/attribution'
 
 import es from './locales/es.json'
 import en from './locales/en.json'
 
 const config = await loadClientConfig()
 
+captureAttribution()
 setupConsentMode(config.gtm_id)
 loadConsentManager(config.consent)
 
