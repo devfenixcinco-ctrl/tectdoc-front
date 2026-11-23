@@ -1,4 +1,9 @@
 {
+    "thanks": {
+        "title": "Thank you for contacting us!",
+        "text": "We received your details. An advisor will contact you soon.",
+        "back": "Browse the catalog"
+    },
     "consent": {
         "label": "I authorize {company} to process my personal data to contact me with commercial information about its products and services, in accordance with the",
         "policy_link": "Privacy Policy",

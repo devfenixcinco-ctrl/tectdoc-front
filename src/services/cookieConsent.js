@@ -48,22 +48,25 @@ export function setupConsentMode(gtmId) {
   gtag('set', 'ads_data_redaction', true)
   gtag('set', 'url_passthrough', true)
 
-  if (gtmId) {
-    loadGtmAfterConsent(gtmId)
-  }
+  watchConsent(gtmId)
 }
 
-const grantsTracking = (entry) =>
-  entry?.[0] === 'consent' &&
-  entry[1] === 'update' &&
-  (entry[2]?.analytics_storage === 'granted' || entry[2]?.ad_storage === 'granted')
+// Estado actual del consentimiento (analytics_storage, ad_storage, ...)
+const consentState = {}
 
-function loadGtmAfterConsent(gtmId) {
-  let loaded = false
+// true si el usuario concedió ese tipo de almacenamiento (por defecto, analítica)
+export function hasConsent(type = 'analytics_storage') {
+  return consentState[type] === 'granted'
+}
+
+const isConsentUpdate = (entry) => entry?.[0] === 'consent' && entry[1] === 'update'
+
+function watchConsent(gtmId) {
+  let gtmLoaded = false
 
   const loadGtm = () => {
-    if (loaded) return
-    loaded = true
+    if (gtmLoaded || !gtmId) return
+    gtmLoaded = true
 
     window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' })
     const script = document.createElement('script')
@@ -77,7 +80,10 @@ function loadGtmAfterConsent(gtmId) {
   const push = window.dataLayer.push
   window.dataLayer.push = function (...entries) {
     const result = push.apply(window.dataLayer, entries)
-    if (entries.some(grantsTracking)) loadGtm()
+
+    entries.filter(isConsentUpdate).forEach((entry) => Object.assign(consentState, entry[2]))
+    if (hasConsent('analytics_storage') || hasConsent('ad_storage')) loadGtm()
+
     return result
   }
 }

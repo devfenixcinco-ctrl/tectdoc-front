@@ -1,4 +1,9 @@
 {
+    "thanks": {
+        "title": "¡Gracias por escribirnos!",
+        "text": "Recibimos sus datos. Un asesor le contactará pronto.",
+        "back": "Ver el catálogo"
+    },
     "consent": {
         "label": "Autorizo a {company} a tratar mis datos personales para contactarme con información comercial sobre sus productos y servicios, de acuerdo con la",
         "policy_link": "Política de privacidad",
