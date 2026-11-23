@@ -24,6 +24,21 @@
         "text": "We received your details. An advisor will contact you soon.",
         "back": "Browse the catalog"
     },
+    "whatsapp": {
+        "label": "Message us on WhatsApp",
+        "messages": {
+            "default": "Hi, I would like information about parts.",
+            "home": "Hi, I would like a quote for a part.",
+            "product-one": "Hi, I am interested in part number {id}.",
+            "vehicles": "Hi, I am looking for parts for {brand} {model}.",
+            "vehicles-articles": "Hi, I am looking for parts for {brand} {model} {car}.",
+            "vehicles-articles-query": "Hi, I am looking for parts for {brand} {model} {car}.",
+            "audience-manufacturers": "Hi, I am a manufacturer and want to list my catalog.",
+            "audience-distributors": "Hi, I am a distributor and want to receive part requests.",
+            "audience-workshops": "Hi, I run a workshop and want quotes for parts.",
+            "contact": "Hi, I would like to talk to an advisor."
+        }
+    },
     "consent": {
         "label": "I authorize {company} to process my personal data to contact me with commercial information about its products and services, in accordance with the",
         "policy_link": "Privacy Policy",

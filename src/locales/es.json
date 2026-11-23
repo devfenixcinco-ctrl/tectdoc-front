@@ -24,6 +24,21 @@
         "text": "Recibimos sus datos. Un asesor le contactará pronto.",
         "back": "Ver el catálogo"
     },
+    "whatsapp": {
+        "label": "Escríbanos por WhatsApp",
+        "messages": {
+            "default": "Hola, quiero información sobre repuestos.",
+            "home": "Hola, quiero cotizar un repuesto.",
+            "product-one": "Hola, me interesa el repuesto con referencia {id}.",
+            "vehicles": "Hola, busco repuestos para {brand} {model}.",
+            "vehicles-articles": "Hola, busco repuestos para {brand} {model} {car}.",
+            "vehicles-articles-query": "Hola, busco repuestos para {brand} {model} {car}.",
+            "audience-manufacturers": "Hola, soy fabricante y quiero publicar mi catálogo.",
+            "audience-distributors": "Hola, soy distribuidor y quiero recibir solicitudes de repuestos.",
+            "audience-workshops": "Hola, tengo un taller y quiero cotizar repuestos.",
+            "contact": "Hola, quiero hablar con un asesor."
+        }
+    },
     "consent": {
         "label": "Autorizo a {company} a tratar mis datos personales para contactarme con información comercial sobre sus productos y servicios, de acuerdo con la",
         "policy_link": "Política de privacidad",
