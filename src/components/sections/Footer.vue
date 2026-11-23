@@ -1,9 +1,11 @@
 <template>
     <div class="!sticky !top-[100vh] !bg-[#000000] !text-white !flex !items-center !justify-between !z-[10] !relative
-    2xl:!h-[250px] 2xl:!px-[200px] 
-    xl:!h-[200px] xl:!px-[100px] 
-    md:!h-[190px] md:!px-[80px] 
-    max-sm:!h-[190px] max-sm:!px-[30px] 
+    !py-[24px] !gap-[20px]
+    max-md:!pb-[96px]
+    2xl:!min-h-[250px] 2xl:!px-[200px] 
+    xl:!min-h-[200px] xl:!px-[100px] 
+    md:!min-h-[190px] md:!px-[80px] 
+    max-sm:!min-h-[190px] max-sm:!px-[30px] 
     ">
         <!-- Izquierda -->
         <div class="!flex !flex-col !justify-center !gap-[15px]"
@@ -29,32 +31,44 @@
             md:!gap-[20px]
             max-sm:!gap-[15px]"
             >
-                <!-- Botones de redes sociales -->
-                <SocialMedia 
-                    customClass="
-                    2xl:!w-[30px]
-                    xl:!w-[25px]
-                    md:!w-[18px]
-                    max-sm:!w-[13px]"
-                    :redSocial="SocialFacebook"
-                />
-                <SocialMedia 
-                    customClass="
-                    2xl:!w-[30px]
-                    xl:!w-[25px]
-                    md:!w-[18px]
-                    max-sm:!w-[13px]"
-                    :redSocial="SocialInstagram"
-                />
-                <SocialMedia 
-                    customClass="
-                    2xl:!w-[30px]
-                    xl:!w-[25px]
-                    md:!w-[18px]
-                    max-sm:!w-[13px]"
-                    :redSocial="SocialWhatsapp"
-                />
+                <!-- Botones de redes sociales: solo las que el cliente configuró -->
+                <a
+                    v-for="social in socialLinks"
+                    :key="social.name"
+                    :href="social.href"
+                    target="_blank"
+                    rel="noopener"
+                    :aria-label="social.name"
+                >
+                    <SocialMedia 
+                        customClass="
+                        2xl:!w-[30px]
+                        xl:!w-[25px]
+                        md:!w-[18px]
+                        max-sm:!w-[13px]"
+                        :redSocial="social.icon"
+                    />
+                </a>
             </div>
+
+            <!-- Datos de la empresa (FUNC-04), configurados por cliente -->
+            <address
+                v-if="footer.company || footer.address || footer.phone || footer.email"
+                class="!not-italic !font-sans !text-[#C5C5C5] !leading-relaxed
+                2xl:!text-[14px] xl:!text-[13px] md:!text-[11px] max-sm:!text-[10px]"
+            >
+                <p v-if="footer.company">
+                    <strong class="!text-[#FFFFFF]">{{ footer.company }}</strong>
+                    <span v-if="footer.tax_id"> · NIT {{ footer.tax_id }}</span>
+                </p>
+                <p v-if="footer.address">{{ footer.address }}</p>
+                <p v-if="footer.phone">
+                    <a :href="`tel:${footer.phone.replace(/[^\d+]/g, '')}`" class="hover:!text-[#FF4338]">{{ footer.phone }}</a>
+                </p>
+                <p v-if="footer.email">
+                    <a :href="`mailto:${footer.email}`" class="hover:!text-[#FF4338]">{{ footer.email }}</a>
+                </p>
+            </address>
         </div>
 
         <!-- Derecha -->
@@ -93,6 +107,24 @@
                 }"
             >
                 {{ $t('footer.pages.catalog') }}
+            </RouterLink>
+
+            <!-- Enlaces de navegación - Contacto -->
+            <RouterLink
+                to="/contacto"
+                class="!text-[#FFFFFF] !font-poppins 
+                !transition !duration-300 !ease-in-out 
+                2xl:!text-[18px]
+                xl:!text-[15px]
+                md:!text-[12px]
+                max-sm:!text-[10px]"
+                :class="{ 
+                    '!font-bold !text-[#0080BB] 2xl:!text-[22px] xl:!text-[18px] md:!text-[15px] max-sm:!text-[12px]': $route.path === '/contacto' 
+                }, { 
+                    'hover:!text-[#FF4338] hover:!scale-105' : $route.path !== '/contacto' 
+                }"
+            >
+                {{ $t('footer.pages.contact') }}
             </RouterLink>
             
             <!-- Divider -->
@@ -261,8 +293,22 @@ import SocialMedia from '../Footer/SocialButtons.vue';
 import SocialFacebook from '../../assets/icons/social-media/facebook.svg';
 import SocialInstagram from '../../assets/icons/social-media/instagram.svg';
 import SocialWhatsapp from '../../assets/icons/social-media/whatsapp.svg';
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { hasConsentManager, openConsentSettings } from '../../services/cookieConsent';
+import { clientConfig } from '../../services/config';
+
+// Datos del pie de página configurados para el cliente (razón social, NIT, contacto, redes)
+const footer = computed(() => clientConfig.footer || {})
+
+const socialLinks = computed(() => {
+    const whatsapp = String(clientConfig.whatsapp || '').replace(/\D/g, '')
+
+    return [
+        { name: 'Facebook', icon: SocialFacebook, href: footer.value.facebook },
+        { name: 'Instagram', icon: SocialInstagram, href: footer.value.instagram },
+        { name: 'WhatsApp', icon: SocialWhatsapp, href: whatsapp ? `https://wa.me/${whatsapp}` : null }
+    ].filter(social => social.href)
+})
 
 // Variable reactiva para el logo de AMostrar
 const LogoAMostrar = ref(LogoNextMobi)

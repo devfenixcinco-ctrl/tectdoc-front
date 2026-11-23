@@ -932,6 +932,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <Footer />
 </template>
 
 <script setup>
@@ -939,6 +942,7 @@ import { onMounted, ref, computed } from 'vue'
 import { tecdoc } from '../services/tecdoc'
 
 import Header from '../components/sections/Header.vue'
+import Footer from '../components/sections/Footer.vue'
 
 import LittleButton from '../components/LittleButtonsProduct.vue'
 import ImagenesProductos from '../components/ImagenesProductos.vue'
