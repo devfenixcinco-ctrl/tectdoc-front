@@ -14,6 +14,7 @@ const VehiclesArticles = () => import('../views/VehiclesArticles.vue')
 const LegalView = () => import('../views/LegalView.vue')
 const ContactView = () => import('../views/ContactView.vue')
 const ThanksView = () => import('../views/ThanksView.vue')
+const AudienceView = () => import('../views/AudienceView.vue')
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -30,6 +31,9 @@ const routes = [
   { path: '/politica-de-cookies', name: 'cookies-policy', component: LegalView, props: { policy: 'cookies' } },
   { path: '/contacto', name: 'contact', component: ContactView },
   { path: '/gracias', name: 'thanks', component: ThanksView },
+  { path: '/fabricantes', name: 'audience-manufacturers', component: AudienceView, props: { page: 'fabricantes', segment: 'fabricante' } },
+  { path: '/distribuidores', name: 'audience-distributors', component: AudienceView, props: { page: 'distribuidores', segment: 'distribuidor' } },
+  { path: '/talleres', name: 'audience-workshops', component: AudienceView, props: { page: 'talleres', segment: 'taller' } },
 ]
 
 const router = createRouter({

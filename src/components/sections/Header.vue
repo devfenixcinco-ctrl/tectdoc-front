@@ -237,6 +237,9 @@ const LogoAMostrar = ref(LogoNextMobi)
 const items = [
     { title: 'Home', icon: 'mdi-home', route: { name: 'home' } },
     { title: 'Cátalogo de autopartes', icon: 'mdi-file-document-outline', route: { name: 'catalogo' } },
+    { title: 'Fabricantes', icon: 'mdi-factory', route: { name: 'audience-manufacturers' } },
+    { title: 'Distribuidores', icon: 'mdi-truck-delivery-outline', route: { name: 'audience-distributors' } },
+    { title: 'Talleres', icon: 'mdi-wrench-outline', route: { name: 'audience-workshops' } },
     { title: 'Contacto', icon: 'mdi-email-outline', route: { name: 'contact' } }
 ]
 
