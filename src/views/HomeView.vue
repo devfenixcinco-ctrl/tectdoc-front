@@ -86,19 +86,19 @@
             class="!bg-transparent"
           >
             <v-btn value="V">
-              Automóvil
+              {{ $t('vehicle_types.V') }}
             </v-btn>
 
             <v-btn value="O">
-              Vehículos comerciales pesados
+              {{ $t('vehicle_types.O') }}
             </v-btn>
 
             <v-btn value="L">
-              Vehículos comerciales ligeros
+              {{ $t('vehicle_types.L') }}
             </v-btn>
 
             <v-btn value="B">
-              Motocicletas
+              {{ $t('vehicle_types.B') }}
             </v-btn>
           </v-btn-toggle>
           <!-- Contenedor de filtros -->
@@ -139,6 +139,7 @@
               :outlinedBorder="false"
               :label="$t('filters.brand')"
               :itemsSelect="brandsArray"
+              :loading="loading.brands"
               @update:modelValue="activateModel"
             />
   
@@ -154,6 +155,7 @@
               :outlinedBorder="false"
               :label="$t('filters.model')"
               :itemsSelect="modelsArray"
+              :loading="loading.models"
               @update:modelValue="activateSpecificVehicle"
               :disabled="disabledModel"
             />
@@ -170,6 +172,7 @@
               :outlinedBorder="false"
               :label="$t('filters.model-specific')"
               :itemsSelect="modelsSpecificArray"
+              :loading="loading.specific"
               @update:modelValue="navigate"
               :disabled="disabled"
             />
@@ -187,6 +190,7 @@
               :outlinedBorder="false"
               :label="$t('filters.product')"
               :itemsSelect="fabricantes"
+              :loading="loading.fabricantes"
             />
   
             <!-- Filtro de grupo -->
@@ -202,6 +206,7 @@
               :outlinedBorder="false"
               :label="$t('filters.group')"
               :itemsSelect="assemblyGroups"
+              :loading="loading.groups"
               itemText="group"
               itemValue="idGroup"
             />
@@ -650,7 +655,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
+import { ref, reactive, onMounted, onBeforeUnmount, watch } from 'vue'
 import { tecdoc } from '../services/tecdoc'
 
 import { useRouter, useRoute } from 'vue-router'
@@ -720,6 +725,10 @@ watch(typeVehicle, () => {
 // Lista de marcas disponibles
 let brandsArray = ref([])
 
+// Listas que se están consultando: los selectores muestran "Cargando..." en vez de
+// "Sin resultados" mientras llegan los datos. Las del montaje empiezan cargando.
+const loading = reactive({ brands: true, models: false, specific: false, fabricantes: true, groups: true })
+
 // Lista de fabricantes
 const fabricantes = ref([])
 
@@ -746,6 +755,8 @@ watch(group, () => {
 
 // Función para obtener las marcas desde la API
 async function getManufacturers() {
+    loading.brands = true
+
     try {
         let response = await tecdoc({
             "getManufacturers2": { 
@@ -756,6 +767,8 @@ async function getManufacturers() {
         brandsArray.value = response.data.data.array.map(item => ({ name: item.manuName, id: item.manuId }))
     } catch (error) {
         console.log(error);
+    } finally {
+        loading.brands = false
     }
 }
 
@@ -771,6 +784,8 @@ async function getModels(id = null) {
     id = brandsArray.value.find(item => item.name === brand.value).id
   }
   
+  loading.models = true
+
   try {
     let response = await tecdoc({
       "getLinkageTargets": {
@@ -799,6 +814,8 @@ async function getModels(id = null) {
     idBrand = id
   } catch (error) {
       console.log(error);
+  } finally {
+    loading.models = false
   }
 }
 
@@ -816,6 +833,8 @@ async function getVehicleSpecific(idModel = null, idBrand = null) {
     idBrand = brand.value.id
   }
   
+  loading.specific = true
+
   try {
     let response = await tecdoc({
       "getLinkageTargets": {
@@ -884,11 +903,15 @@ async function getVehicleSpecific(idModel = null, idBrand = null) {
     modelsSpecific.value = response.data.linkageTargets
   } catch (error) {
       console.log(error);
+  } finally {
+    loading.specific = false
   }
 }
 
 // Funcion para obtener los fabricantes
 async function getFabricantes() {
+    loading.fabricantes = true
+
     try {
         let response = await tecdoc({
             "getBrands": {
@@ -900,11 +923,15 @@ async function getFabricantes() {
         .sort((a, b) => a.name.localeCompare(b.name))
     } catch (error) {
         console.log(error);
+    } finally {
+        loading.fabricantes = false
     }
 }
 
 // Funcion para obtener los groups
 async function getGroups() {
+    loading.groups = true
+
     try {
         let response = await tecdoc({
             "getArticles": {
@@ -921,6 +948,8 @@ async function getGroups() {
         );
     } catch (error) {
         console.log(error);
+    } finally {
+        loading.groups = false
     }
 }
 

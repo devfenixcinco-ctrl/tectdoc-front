@@ -10,6 +10,8 @@
         
         variant="solo"
         clearable
+        :loading="loading"
+        :no-data-text="loading ? $t('filters.loading') : $t('filters.no_data')"
         menu-icon="mdi-chevron-down"
         :menu-props="{
             offsetY: true,
@@ -62,6 +64,11 @@ const props = defineProps({
     itemText: {
         type: String,
         default: 'name'
+    },
+    // Mientras se consultan los datos muestra "Cargando..." en lugar de "Sin resultados"
+    loading: {
+        type: Boolean,
+        default: false
     }
 })
 

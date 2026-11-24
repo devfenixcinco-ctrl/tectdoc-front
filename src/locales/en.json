@@ -1,4 +1,10 @@
 {
+    "vehicle_types": {
+        "V": "Cars",
+        "O": "Heavy commercial vehicles",
+        "L": "Light commercial vehicles",
+        "B": "Motorcycles"
+    },
     "contact": {
         "title": "Contact us",
         "intro": "Leave us your details and an advisor will contact you.",
@@ -86,7 +92,9 @@
         "model": "Vehicle Model",
         "model-specific": "Vehicle Specific",
         "product": "Product Brand",
-        "group": "Group"
+        "group": "Group",
+        "loading": "Loading...",
+        "no_data": "No results"
     },
     "home": {
         "spare-parts": "Spare Parts",

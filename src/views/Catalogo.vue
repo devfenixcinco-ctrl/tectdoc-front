@@ -47,19 +47,19 @@
             class="!bg-transparent"
         >
             <v-btn value="V">
-              Automóvil
+              {{ $t('vehicle_types.V') }}
             </v-btn>
 
             <v-btn value="O">
-              Vehículos comerciales pesados
+              {{ $t('vehicle_types.O') }}
             </v-btn>
 
             <v-btn value="L">
-              Vehículos comerciales ligeros
+              {{ $t('vehicle_types.L') }}
             </v-btn>
 
             <v-btn value="B">
-              Motocicletas
+              {{ $t('vehicle_types.B') }}
             </v-btn>
         </v-btn-toggle>
 

@@ -1,4 +1,10 @@
 {
+    "vehicle_types": {
+        "V": "Automóvil",
+        "O": "Vehículos comerciales pesados",
+        "L": "Vehículos comerciales ligeros",
+        "B": "Motocicletas"
+    },
     "contact": {
         "title": "Contáctenos",
         "intro": "Déjenos sus datos y un asesor le contactará.",
@@ -86,7 +92,9 @@
         "model": "Modelo Vehículo",
         "model-specific": "Vehículo Específico",
         "product": "Marca Producto",
-        "group": "Grupo"
+        "group": "Grupo",
+        "loading": "Cargando...",
+        "no_data": "Sin resultados"
     },
     "home": {
         "spare-parts": "Autopartes",
