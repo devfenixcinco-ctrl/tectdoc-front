@@ -566,6 +566,7 @@
               !h-[55px] !rounded-[8px] !normal-case !text-[#FFFFFF]
               max-sm:!text-[12px] max-sm:!w-[230px] max-sm:!h-[45px]"
               :label="$t('home.button')"
+              v-bind="appLink('home_principal')"
             />
 
             <!-- Botón 2 -->
@@ -575,6 +576,7 @@
               !h-[55px] !rounded-[8px] !normal-case !bg-[#FF4338] !text-[#000000]
               max-sm:!text-[12px] max-sm:!w-[230px] max-sm:!h-[45px]"
               :label="$t('home.button')"
+              v-bind="appLink('home_principal')"
               />
           </div>
         </div>
@@ -644,7 +646,7 @@
         !h-[55px] !rounded-[8px] !normal-case !text-[#FF4338]
         max-sm:!text-[12px] max-sm:!w-[230px] max-sm:!h-[45px]"
         :label="$t('home.button')"
-        @click="router.push('/products')"
+        v-bind="appLink('home_final')"
       />
     </div>
   </section>
@@ -657,6 +659,8 @@
 <script setup>
 import { ref, reactive, onMounted, onBeforeUnmount, watch } from 'vue'
 import { tecdoc } from '../services/tecdoc'
+import { trackEvent } from '../services/analytics'
+import { clientConfig } from '../services/config'
 
 import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
@@ -689,6 +693,18 @@ import bgImage from '../assets/images/background.png?w=1920&format=webp&quality=
 import bgImage2 from '../assets/images/background-2.svg?w=1600&format=webp&quality=60'
 import CarHome from '../assets/images/car_home.png?w=1200&format=webp&quality=75'
 const activeSection = ref('buscar-auto-parte')
+
+// Botones "Ver solicitudes de repuestos": abren la aplicación de solicitudes del
+// cliente (FENIX_APP_URL) y miden el acceso (app_access) con el botón de origen.
+// Si el cliente no tiene la aplicación configurada llevan al formulario de contacto.
+const appLink = (location) => clientConfig.app_url
+  ? {
+      href: clientConfig.app_url,
+      target: '_blank',
+      rel: 'noopener',
+      onClick: () => trackEvent('app_access', { location, link_url: clientConfig.app_url })
+    }
+  : { to: { name: 'contact' } }
 
 // Función para ir al contenido de la sección
 const scrollToSection = (id) => {

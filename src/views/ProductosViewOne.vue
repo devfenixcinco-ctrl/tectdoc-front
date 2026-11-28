@@ -941,6 +941,7 @@
 import { onMounted, ref, computed } from 'vue'
 import { tecdoc } from '../services/tecdoc'
 import { setPageTitle } from '../services/pageTracking'
+import { trackEvent } from '../services/analytics'
 
 import Header from '../components/sections/Header.vue'
 import Footer from '../components/sections/Footer.vue'
@@ -1003,6 +1004,18 @@ async function getInfoProduct() {
         // Mismo título que genera el backend: nombre, referencia y marca
         const product = infoProduct.value[0]
         setPageTitle(`${product.group} ${product.partNumber} - ${product.fabriName}`, route.fullPath)
+
+        // Vista de producto (ANA-05) con el formato de comercio electrónico de GA4.
+        // No hay precio de venta, así que no se envía valor ni moneda.
+        trackEvent('view_item', {
+            ecommerce: {
+                items: [{
+                    item_id: product.partNumber,
+                    item_name: product.group,
+                    item_brand: product.fabriName
+                }]
+            }
+        })
     } catch (error) {
         console.log(error);
     }

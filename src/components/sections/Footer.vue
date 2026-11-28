@@ -63,10 +63,10 @@
                 </p>
                 <p v-if="footer.address">{{ footer.address }}</p>
                 <p v-if="footer.phone">
-                    <a :href="`tel:${footer.phone.replace(/[^\d+]/g, '')}`" class="hover:!text-[#FF4338]">{{ footer.phone }}</a>
+                    <a :href="`tel:${footer.phone.replace(/[^\d+]/g, '')}`" class="hover:!text-[#FF4338]" @click="trackContactClick('click_phone')">{{ footer.phone }}</a>
                 </p>
                 <p v-if="footer.email">
-                    <a :href="`mailto:${footer.email}`" class="hover:!text-[#FF4338]">{{ footer.email }}</a>
+                    <a :href="`mailto:${footer.email}`" class="hover:!text-[#FF4338]" @click="trackContactClick('click_email')">{{ footer.email }}</a>
                 </p>
             </address>
         </div>
@@ -296,9 +296,16 @@ import SocialWhatsapp from '../../assets/icons/social-media/whatsapp.svg';
 import { computed, onMounted, ref } from 'vue';
 import { hasConsentManager, openConsentSettings } from '../../services/cookieConsent';
 import { clientConfig } from '../../services/config';
+import { trackEvent } from '../../services/analytics';
+import { useRoute } from 'vue-router';
 
 // Datos del pie de página configurados para el cliente (razón social, NIT, contacto, redes)
 const footer = computed(() => clientConfig.footer || {})
+
+const route = useRoute()
+
+// Clic en el teléfono o el correo del pie de página (ANA-05), con la página de origen
+const trackContactClick = (event) => trackEvent(event, { page: route.name || 'otra' })
 
 const socialLinks = computed(() => {
     const whatsapp = String(clientConfig.whatsapp || '').replace(/\D/g, '')

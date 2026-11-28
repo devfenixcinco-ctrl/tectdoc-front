@@ -125,6 +125,8 @@ export function setupPageTracking(router, i18n) {
     previousUrl = new URL(to.fullPath, window.location.origin).href
 
     if (to.meta.asyncTitle) {
+      // Mientras carga se muestra el nombre del sitio y no el título de la página anterior
+      document.title = site()
       setTimeout(() => markReady(view), TITLE_WAIT_MS)
       return
     }
