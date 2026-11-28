@@ -7,6 +7,7 @@ import vuetify from './plugins/vuetify'
 import { loadClientConfig } from './services/config'
 import { loadConsentManager, setupConsentMode } from './services/cookieConsent'
 import { captureAttribution } from './services/attribution'
+import { setupMeasurement } from './services/analytics'
 import { setupPageTracking } from './services/pageTracking'
 
 import es from './locales/es.json'
@@ -16,6 +17,7 @@ const config = await loadClientConfig()
 
 captureAttribution()
 setupConsentMode(config.gtm_id)
+setupMeasurement(config)
 loadConsentManager(config.consent)
 
 const i18n = createI18n({
