@@ -59,6 +59,18 @@ export function hasConsent(type = 'analytics_storage') {
   return consentState[type] === 'granted'
 }
 
+// true si aceptó analítica o publicidad (lo que permite cargar GTM y medir)
+export function hasMeasurementConsent() {
+  return hasConsent('analytics_storage') || hasConsent('ad_storage')
+}
+
+// Funciones que se ejecutan cuando el usuario pasa a aceptar la medición
+const consentListeners = []
+
+export function onMeasurementConsent(callback) {
+  consentListeners.push(callback)
+}
+
 const isConsentUpdate = (entry) => entry?.[0] === 'consent' && entry[1] === 'update'
 
 function watchConsent(gtmId) {
@@ -79,10 +91,15 @@ function watchConsent(gtmId) {
   // con una decisión guardada, porque el CMP la reenvía al cargar)
   const push = window.dataLayer.push
   window.dataLayer.push = function (...entries) {
+    const before = hasMeasurementConsent()
     const result = push.apply(window.dataLayer, entries)
 
     entries.filter(isConsentUpdate).forEach((entry) => Object.assign(consentState, entry[2]))
-    if (hasConsent('analytics_storage') || hasConsent('ad_storage')) loadGtm()
+
+    if (hasMeasurementConsent()) {
+      loadGtm()
+      if (!before) consentListeners.forEach((callback) => callback())
+    }
 
     return result
   }

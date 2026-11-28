@@ -1,4 +1,14 @@
 {
+    "page_titles": {
+        "home": "Auto parts catalog",
+        "brands": "Vehicle brands",
+        "models": "{brand} models",
+        "vehicles": "{vehicle}: versions and engines",
+        "articles": "Parts for {vehicle}",
+        "search": "Results for “{search}”",
+        "contact": "Contact",
+        "thanks": "Thank you for contacting us"
+    },
     "vehicle_types": {
         "V": "Cars",
         "O": "Heavy commercial vehicles",

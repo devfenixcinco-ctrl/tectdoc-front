@@ -7,6 +7,7 @@ import vuetify from './plugins/vuetify'
 import { loadClientConfig } from './services/config'
 import { loadConsentManager, setupConsentMode } from './services/cookieConsent'
 import { captureAttribution } from './services/attribution'
+import { setupPageTracking } from './services/pageTracking'
 
 import es from './locales/es.json'
 import en from './locales/en.json'
@@ -26,6 +27,9 @@ const i18n = createI18n({
     en
   }
 })
+
+// page_view y título en cada cambio de ruta (antes de montar, para medir la primera página)
+setupPageTracking(router, i18n)
 
 createApp(App)
   .use(router)

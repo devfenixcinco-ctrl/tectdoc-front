@@ -940,6 +940,7 @@
 <script setup>
 import { onMounted, ref, computed } from 'vue'
 import { tecdoc } from '../services/tecdoc'
+import { setPageTitle } from '../services/pageTracking'
 
 import Header from '../components/sections/Header.vue'
 import Footer from '../components/sections/Footer.vue'
@@ -999,7 +1000,9 @@ async function getInfoProduct() {
         }));
         cantidadImagenes.value = infoProduct.value[0].images.length
 
-        console.log(infoProduct.value)
+        // Mismo título que genera el backend: nombre, referencia y marca
+        const product = infoProduct.value[0]
+        setPageTitle(`${product.group} ${product.partNumber} - ${product.fabriName}`, route.fullPath)
     } catch (error) {
         console.log(error);
     }

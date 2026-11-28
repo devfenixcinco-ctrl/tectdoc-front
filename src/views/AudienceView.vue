@@ -38,13 +38,15 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 import Header from '../components/sections/Header.vue'
 import Footer from '../components/sections/Footer.vue'
 import ContactForm from '../components/ContactForm.vue'
 import { api } from '../services/api'
 import { trackEvent } from '../services/analytics'
-import { clientConfig, clientId } from '../services/config'
+import { clientId } from '../services/config'
+import { setPageTitle } from '../services/pageTracking'
 
 const props = defineProps({
     // fabricantes, distribuidores o talleres
@@ -60,22 +62,22 @@ const props = defineProps({
 })
 
 const content = ref(null)
+const route = useRoute()
 const isLoading = ref(true)
 const error = ref(false)
 
 onMounted(async () => {
-    // Medición propia de cada público
-    trackEvent('view_audience', { segment: props.segment })
-
     try {
         const response = await api.get(`/audiences/${clientId()}/${props.page}`)
         content.value = response.data
-        document.title = `${response.data.title} | ${clientConfig.name}`
+        setPageTitle(response.data.title, route.fullPath)
     } catch (e) {
         console.log(e)
         error.value = true
     } finally {
         isLoading.value = false
+        // Medición propia de cada público (después del page_view de la página)
+        trackEvent('view_audience', { segment: props.segment })
     }
 })
 </script>

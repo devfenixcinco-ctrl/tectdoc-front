@@ -30,11 +30,13 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 import Header from '../components/sections/Header.vue'
 import Footer from '../components/sections/Footer.vue'
 import { api } from '../services/api'
-import { clientConfig, clientId } from '../services/config'
+import { clientId } from '../services/config'
+import { setPageTitle } from '../services/pageTracking'
 
 // "privacidad" o "cookies"
 const props = defineProps({
@@ -45,6 +47,7 @@ const props = defineProps({
 })
 
 const legalDocument = ref(null)
+const route = useRoute()
 const isLoading = ref(true)
 const error = ref(false)
 
@@ -52,7 +55,7 @@ onMounted(async () => {
     try {
         const response = await api.get(`/legal/${clientId()}/${props.policy}`)
         legalDocument.value = response.data
-        document.title = `${response.data.title} | ${clientConfig.name}`
+        setPageTitle(response.data.title, route.fullPath)
     } catch (e) {
         console.log(e)
         error.value = true

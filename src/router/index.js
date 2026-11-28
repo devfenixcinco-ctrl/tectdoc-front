@@ -16,24 +16,25 @@ const ContactView = () => import('../views/ContactView.vue')
 const ThanksView = () => import('../views/ThanksView.vue')
 const AudienceView = () => import('../views/AudienceView.vue')
 
+// meta.asyncTitle: la vista define su título cuando carga sus datos (ver pageTracking.js)
 const routes = [
   { path: '/', name: 'home', component: HomeView },
   { path: '/catalogo/page/results/:search/:type', name: 'products', component: ProductosView },
   { path: '/catalogo/page/group/results/:search/:text', name: 'products-group-page', component: ProductosViewGroupPage },
   { path: '/catalogo/group/results/:search', name: 'products-group', component: ProductosViewGroup },
-  { path: '/product/:id', name: 'product-one', component: ProductosViewOne },
+  { path: '/product/:id', name: 'product-one', component: ProductosViewOne, meta: { asyncTitle: true } },
   { path: '/catalogo', name: 'catalogo', component: Catalogo },
   { path: '/catalogo/model/:brand/:id', name: 'catalogo-model', component: CatalogoModels },
   { path: '/vehicles/:brand/:idBrand/:model/:idModel', name: 'vehicles', component: Vehicles },
   { path: '/vehicles/:brand/:idBrand/:model/:idModel/articles/:car/:idCar', name: 'vehicles-articles', component: VehiclesArticles },
   { path: '/vehicles/search/:query/:brand/:idBrand/:model/:idModel/articles/:car/:idCar', name: 'vehicles-articles-query', component: VehiclesArticles },
-  { path: '/politica-de-privacidad', name: 'privacy-policy', component: LegalView, props: { policy: 'privacidad' } },
-  { path: '/politica-de-cookies', name: 'cookies-policy', component: LegalView, props: { policy: 'cookies' } },
+  { path: '/politica-de-privacidad', name: 'privacy-policy', component: LegalView, props: { policy: 'privacidad' }, meta: { asyncTitle: true } },
+  { path: '/politica-de-cookies', name: 'cookies-policy', component: LegalView, props: { policy: 'cookies' }, meta: { asyncTitle: true } },
   { path: '/contacto', name: 'contact', component: ContactView },
   { path: '/gracias', name: 'thanks', component: ThanksView },
-  { path: '/fabricantes', name: 'audience-manufacturers', component: AudienceView, props: { page: 'fabricantes', segment: 'fabricante' } },
-  { path: '/distribuidores', name: 'audience-distributors', component: AudienceView, props: { page: 'distribuidores', segment: 'distribuidor' } },
-  { path: '/talleres', name: 'audience-workshops', component: AudienceView, props: { page: 'talleres', segment: 'taller' } },
+  { path: '/fabricantes', name: 'audience-manufacturers', component: AudienceView, props: { page: 'fabricantes', segment: 'fabricante' }, meta: { asyncTitle: true } },
+  { path: '/distribuidores', name: 'audience-distributors', component: AudienceView, props: { page: 'distribuidores', segment: 'distribuidor' }, meta: { asyncTitle: true } },
+  { path: '/talleres', name: 'audience-workshops', component: AudienceView, props: { page: 'talleres', segment: 'taller' }, meta: { asyncTitle: true } },
 ]
 
 const router = createRouter({

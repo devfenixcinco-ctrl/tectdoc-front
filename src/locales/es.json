@@ -1,4 +1,14 @@
 {
+    "page_titles": {
+        "home": "Catálogo de autopartes",
+        "brands": "Marcas de vehículos",
+        "models": "Modelos {brand}",
+        "vehicles": "{vehicle}: versiones y motores",
+        "articles": "Repuestos para {vehicle}",
+        "search": "Resultados para «{search}»",
+        "contact": "Contacto",
+        "thanks": "Gracias por escribirnos"
+    },
     "vehicle_types": {
         "V": "Automóvil",
         "O": "Vehículos comerciales pesados",
